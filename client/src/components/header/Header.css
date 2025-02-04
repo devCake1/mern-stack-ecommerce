@@ -110,6 +110,25 @@
   padding: 4px 24px;
 }
 
+.Header-mini-cart-small {
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
+
+.Header-show-mini-cart-small {
+  display: block;
+}
+
+.Header-close-mini-cart-small {
+  display: none;
+}
+
+.Header-mini-cart-small-close-button {
+  width: 30px;
+  height: 30px;
+}
+
 @media only screen and (max-width: 768px) {
   .Header-empty-space {
     width: calc(100% - 250px);
