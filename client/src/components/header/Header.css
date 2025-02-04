@@ -1,3 +1,123 @@
 .Header {
   height: 50px;
 }
+
+.Header > div {
+  float: left;
+}
+
+.Header-logo {
+  width: 200px;
+  height: 100%;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.Header-empty-space {
+  width: calc(100% - 420px);
+  height: 100%;
+}
+
+.Header-menu-button-div {
+  display: none;
+  width: 50px;
+  height: 100%;
+}
+
+.Header-navbar {
+  width: 220px;
+  height: 100%;
+}
+
+.Header-nav-link-div {
+  float: left;
+  height: 100%;
+}
+
+.Header-nav-link {
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+
+.Header-dropdown-content {
+  display: none;
+  white-space: nowrap;
+}
+
+.Header-dropdown-div:hover .Header-dropdown-content {
+  display: block;
+}
+
+.Header-dropdown-link-div {
+  height: 40px;
+}
+
+.Header-dropdown-link {
+  display: inline-block;
+  width: 100%;
+  height: 40;
+  line-height: 40px;
+  vertical-align: middle;
+  padding: 0 15px;
+}
+
+.Header-sidebar  {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+}
+
+.Header-show-sidebar {
+  display: block;
+}
+
+.Header-close-sidebar {
+  display: none;
+}
+
+.Header-sidebar-close-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.Header-sidebar-empty-space {
+  height: 50px;
+}
+
+.Header-sidebar-nav-link {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 16px;
+}
+
+.Header-sidebar-dropdown-div:hover > .Header-sidebar-dropdown-content {
+  display: block;
+}
+
+.Header-sidebar-dropdown-content {
+  display: none;
+}
+
+.Header-sidebar-dropdown-link {
+  display: inline-block;
+  width: 100%;
+  padding: 4px 24px;
+}
+
+@media only screen and (max-width: 768px) {
+  .Header-empty-space {
+    width: calc(100% - 250px);
+  }
+  .Header-menu-button-div {
+    display: block;
+  }
+  .Header-navbar {
+    display: none;
+  }
+}
