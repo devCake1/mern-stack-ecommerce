@@ -1,8 +1,12 @@
 const express = require("express");
-const categoryRoutes = require("./routes/categoryRoutes");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const categoryRoutes = require("./routes/categoryRoutes");
 const app = express();
 const port = 3000;
+
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Welcome to MERN-STACK-ECOMMERCE");

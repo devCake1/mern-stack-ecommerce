@@ -26,8 +26,13 @@
   margin-bottom: 10px;
 }
 
-.Home-top-banner-content > button {
-  padding: 4px 8px;
+.Home-categories > div {
+  padding: 10px;
+}
+
+.Home-categories-link {
+  display: block;
+  padding: 10px 0;
 }
 
 @media only screen and (max-width: 768px) {
