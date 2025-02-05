@@ -1,0 +1,21 @@
+Database Name: ecommerceDB
+DBMS: MongoDB
+
+Collections:
+- users
+- products
+- categories
+- orders
+- reviews
+
+db.categories.insertMany([
+  {
+    "category": "Mobile Phone"
+  },
+  {
+    "category": "Watch"
+  },
+  {
+    "category": "Headphone"
+  }
+]);
