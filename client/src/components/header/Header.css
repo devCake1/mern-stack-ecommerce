@@ -1,5 +1,6 @@
 .Header {
   height: 50px;
+  z-index: 1;
 }
 
 .Header > div {

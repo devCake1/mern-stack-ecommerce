@@ -1,0 +1,37 @@
+.Home-top-banner {
+  width: 100%;
+  height: 650px;
+  background-image: url("../../assets/ecommerce-3562191_1920.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 15px;
+}
+
+.Home-top-banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+}
+
+.Home-top-banner-content > h3 {
+  margin-bottom: 10px;
+}
+
+.Home-top-banner-content > p {
+  margin-bottom: 10px;
+}
+
+.Home-top-banner-content > button {
+  padding: 4px 8px;
+}
+
+@media only screen and (max-width: 768px) {
+  .Home-top-banner-content {
+    width: 250px;
+  }
+}
