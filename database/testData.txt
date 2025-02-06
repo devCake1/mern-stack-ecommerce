@@ -19,3 +19,78 @@ db.categories.insertMany([
     "category": "Headphone"
   }
 ]);
+
+db.products.insertMany([
+  {
+    "imgURL": "",
+    "productName": "Mobile Phone 1",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Mobile Phone",
+    "discount": 0,
+    "price": 119,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Watch 1",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Watch",
+    "discount": 0,
+    "price": 42,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Watch 2",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Watch",
+    "discount": 0,
+    "price": 55,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Mobile Phone 2",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Mobile Phone",
+    "discount": 0,
+    "price": 135,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Headphone 1",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Headphone",
+    "discount": 0,
+    "price": 24,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Watch 3",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Watch",
+    "discount": 0,
+    "price": 79,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Headphone 2",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Headphone",
+    "discount": 0,
+    "price": 31,
+    "inStock": 8
+  },
+  {
+    "imgURL": "",
+    "productName": "Watch 4",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+    "category": "Watch",
+    "discount": 0,
+    "price": 67,
+    "inStock": 8
+  }
+]);

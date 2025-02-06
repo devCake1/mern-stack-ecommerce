@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const categoryRoutes = require("./routes/categoryRoutes");
+const productRoutes = require("./routes/productRoutes");
 const app = express();
 const port = 3000;
 
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/categories", categoryRoutes);
+app.use("/api/products", productRoutes);
 
 app.all("*", (req, res, next) => {
   const err = new Error("404 not found");
