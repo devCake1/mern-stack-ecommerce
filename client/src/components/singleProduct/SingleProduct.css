@@ -1,0 +1,33 @@
+.SingleProduct {
+  width: 250px;
+  height: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 4px 4px 8px 6px rgba(0, 0, 0, 0.2);
+}
+
+.SingleProduct-image-div {
+  width: 100%;
+  height: 250px;
+}
+
+.SingleProduct-product-name {
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 30px;
+  vertical-align: middle;
+}
+
+.SingleProduct-description {
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.SingleProduct-button {
+  padding: 5px 0;
+  margin-bottom: 5px;
+}

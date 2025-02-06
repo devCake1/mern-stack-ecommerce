@@ -2,9 +2,11 @@ import "./Home.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SingleProduct from "../../components/singleProduct/SingleProduct";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/api/categories?limit=6")
@@ -13,7 +15,14 @@ const Home = () => {
     })
     .catch((err) => {
       console.log(err);
+    });
+    axios.get("http://localhost:3000/api/products?page=1&limit=6")
+    .then((res) => {
+      setProducts(res.data.products);
     })
+    .catch((err) => {
+      console.log(err);
+    });
   }, []);
 
   return (
@@ -34,6 +43,20 @@ const Home = () => {
       </div>
       <div className="text-center margin-bottom-fifty-px margin-top-ten-px">
         <button className="button-style bg-black text-white cursor-pointer">View All</button>
+      </div>
+
+      {/* ----- our products ----- */}
+      <h3 className="margin-bottom-twenty-px text-3xl font-bold text-center">Our Products</h3>
+      <div className="margin-bottom-fifty-px">
+        <div className="Home-our-products grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {products.map((product) => {
+            return (
+              <div key={product._id}>
+                <SingleProduct product={product}/>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

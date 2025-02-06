@@ -35,6 +35,18 @@
   padding: 10px 0;
 }
 
+.Home-our-products {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .Home-our-products {
+    max-width: 550px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .Home-top-banner-content {
     width: 250px;
