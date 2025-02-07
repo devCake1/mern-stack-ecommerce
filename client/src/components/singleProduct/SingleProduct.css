@@ -1,8 +1,7 @@
 .SingleProduct {
   width: 250px;
-  height: 500px;
+  height: 490px;
   margin: 0 auto;
-  padding: 20px;
   box-shadow: 4px 4px 8px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -25,9 +24,4 @@
   text-overflow: ellipsis;
   line-height: 20px;
   vertical-align: middle;
-}
-
-.SingleProduct-button {
-  padding: 5px 0;
-  margin-bottom: 5px;
 }
