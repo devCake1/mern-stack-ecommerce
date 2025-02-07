@@ -3,10 +3,29 @@ DBMS: MongoDB
 
 Collections:
 - users
-- products
 - categories
+- products
 - orders
 - reviews
+
+db.users.insertMany([
+  {
+    "imgURL": "",
+    "firstName": "User",
+    "lastName": "One",
+    "email": "user.one@example.com",
+    "password": "123456",
+    "isAdmin": true
+  },
+  {
+    "imgURL": "",
+    "firstName": "User",
+    "lastName": "Two",
+    "email": "user.two@example.com",
+    "password": "123456",
+    "isAdmin": false
+  }
+]);
 
 db.categories.insertMany([
   {
