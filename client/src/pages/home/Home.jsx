@@ -9,14 +9,14 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/categories?limit=6")
+    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/categories?limit=6`)
     .then((res) => {
       setCategories(res.data.categories);
     })
     .catch((err) => {
       console.log(err);
     });
-    axios.get("http://localhost:3000/api/products?page=1&limit=6")
+    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?page=1&limit=6`)
     .then((res) => {
       setProducts(res.data.products);
     })

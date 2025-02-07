@@ -5,8 +5,8 @@ const signIn = async (req, res, next) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-    const user = await User.find({ email, password }, { password: 0 });
-    if (user.length > 0) {
+    const user = await User.findOne({ email, password }, { password: 0 });
+    if (user) {
       const signInToken = jwt.sign({ usreId: user._id }, process.env.SIGNIN_KEY, { expiresIn: "8h" });
       res.status(200).send({
         user,
