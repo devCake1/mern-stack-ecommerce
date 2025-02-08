@@ -1,6 +1,6 @@
 import "./SignIn.css";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
@@ -16,6 +16,7 @@ const SignIn = () => {
     .then((res) => {
       if (res.data.isSuccessful) {
         setShowError("");
+        localStorage.setItem("userId", res.data.user._id);
         localStorage.setItem("imgURL", res.data.user.imgURL);
         localStorage.setItem("firstName", res.data.user.firstName);
         localStorage.setItem("lastName", res.data.user.lastName);
@@ -33,7 +34,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="SignIn mt-16 mx-auto px-8">
+    (localStorage.getItem("userId")) ? <Navigate to="/"/> : <div className="SignIn mt-16 mx-auto px-8">
       <h3 className="mb-4 text-center text-3xl font-bold">Sign In</h3>
       <form className="block" onSubmit={handleSubmit}>
         <div className="mb-2">

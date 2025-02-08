@@ -1,10 +1,12 @@
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faCircleUser, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import MiniCart from "../miniCart/MiniCart";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const showSidebar = () => {
     document.getElementById("Header-sidebar").classList.replace("Header-close-sidebar", "Header-show-sidebar");
     closeMiniCartSmall();
@@ -23,6 +25,11 @@ const Header = () => {
     document.getElementById("Header-mini-cart-small").classList.replace("Header-show-mini-cart-small", "Header-close-mini-cart-small");
   };
 
+  const signOut = () => {
+    localStorage.clear();
+    navigate("/")
+  };
+
   return (
     <div className="Header bg-blue-200 relative">
       <div className="Header-logo bg-blue-300 text-center text-xl font-bold">
@@ -36,7 +43,7 @@ const Header = () => {
       </div>
       <div className="Header-navbar">
         <div className="Header-nav-link-div relative">
-          <Link to="" className="Header-nav-link hover:bg-blue-300">Home</Link>
+          <Link to="/" className="Header-nav-link hover:bg-blue-300">Home</Link>
         </div>
         <div className="Header-nav-link-div hover:bg-blue-300">
           <Link to="" className="Header-nav-link">Shop</Link>
@@ -53,12 +60,18 @@ const Header = () => {
         <div className="Header-nav-link-div Header-dropdown-div hover:bg-blue-300 relative">
           <Link to="" className="Header-nav-link"><FontAwesomeIcon icon={faCircleUser}/></Link>
           <div className="Header-dropdown-content absolute top-full right-0 bg-blue-200">
-            <div className="Header-dropdown-link-div">
-              <Link to="" className="Header-dropdown-link hover:bg-blue-300">Sign In</Link>
-            </div>
-            <div className="Header-dropdown-link-div">
+            {!localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
+              <Link to="/sign-in" className="Header-dropdown-link hover:bg-blue-300">Sign In</Link>
+            </div>}
+            {!localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
               <Link to="" className="Header-dropdown-link hover:bg-blue-300">Sign Up</Link>
-            </div>
+            </div>}
+            {localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
+              <Link to="" className="Header-dropdown-link hover:bg-blue-300">Dashboard</Link>
+            </div>}
+            {localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
+              <Link to="" className="Header-dropdown-link hover:bg-blue-300" onClick={signOut}>Sign Out</Link>
+            </div>}
           </div>
         </div>
       </div>
@@ -70,7 +83,7 @@ const Header = () => {
         </div>
         <div className="Header-sidebar-empty-space"></div>
         <div>
-          <Link to="" className="Header-sidebar-nav-link">Home</Link>
+          <Link to="/" className="Header-sidebar-nav-link">Home</Link>
         </div>
         <div>
           <Link to="" className="Header-sidebar-nav-link">Shop</Link>
@@ -88,12 +101,18 @@ const Header = () => {
             <FontAwesomeIcon icon={faCircleUser}/>
           </Link>
           <div className="Header-sidebar-dropdown-content">
-            <div className="Header-sidebar-dropdown-link-div">
-              <Link to="" className="Header-sidebar-dropdown-link">Sign In</Link>
-            </div>
-            <div className="Header-sidebar-dropdown-link-div">
+            {!localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">
+              <Link to="/sign-in" className="Header-sidebar-dropdown-link">Sign In</Link>
+            </div>}
+            {!localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">
               <Link to="" className="Header-sidebar-dropdown-link">Sign Up</Link>
-            </div>
+            </div>}
+            {localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">
+              <Link to="" className="Header-sidebar-dropdown-link">Dashboard</Link>
+            </div>}
+            {localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">
+              <Link to="" className="Header-sidebar-dropdown-link" onClick={signOut}>Sign Out</Link>
+            </div>}
           </div>
         </div>
       </div>
