@@ -4,9 +4,10 @@ const getProducts = async (req, res, next) => {
   try {
     const page = req.query.page;
     const limit = req.query.limit;
-    let search = req.query.search;
+    const search = req.query.search;
     let searchRegexp = null;
     let filter = {};
+    let countProducts = 0;
     if (search) {
       searchRegexp = new RegExp(`.*${search}.*`, "i");
       filter = {
@@ -14,13 +15,16 @@ const getProducts = async (req, res, next) => {
           { productName: { $regex: searchRegexp } },
           { category: { $regex: searchRegexp } }
         ]
-      }
+      };
+      countProducts = await Product.find(filter).countDocuments();
+    } else {
+      countProducts = await Product.find().countDocuments();
     }
     const products = await Product.find(filter).skip((page - 1) * limit).limit(limit);
     if (products.length > 0) {
       res.status(200).send({
         products,
-        totalPages: Math.ceil(products.length / limit),
+        totalPages: Math.ceil(countProducts / limit),
         message: "",
         isSuccessful: true
       });
