@@ -25,6 +25,7 @@ const Shop = () => {
     const category = new URLSearchParams(location.search).get("category");
     if (category) {
       getProducts(1, 6, category);
+      setDefaultCategory(category);
     } else {
       getProducts(1, 6);
     }
@@ -52,6 +53,8 @@ const Shop = () => {
   };
 
   const getProductsByCategory = (e) => {
+    setDefaultCategory(e.target.value);
+    setSearch("");
     if (e.target.value === "All") {
       getProducts(1, itemsPerPage);
       return;
@@ -97,7 +100,7 @@ const Shop = () => {
           <h3 className="text-3xl font-bold mt-1">Shop</h3>
           <form className="mt-4 sm:mt-1">
             <span>Category: </span>
-            <select className="border border-black" defaultValue={defaultCategory} onChange={getProductsByCategory}>
+            <select className="border border-black" value={defaultCategory} onChange={getProductsByCategory}>
               <option value="All">All</option>
               {categories.map((category) => <option key={category._id} value={category.category}>{category.category}</option>)}
             </select>

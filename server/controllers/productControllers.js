@@ -39,4 +39,17 @@ const getProducts = async (req, res, next) => {
   }
 };
 
-module.exports = { getProducts };
+const getSingleProduct = async (req, res, next) => {
+  try {
+    const product = await Product.findOne({  _id: req.params.productId });
+    res.status(200).send({
+      product,
+      message: "",
+      isSuccessful: true
+    })
+  } catch (err) {
+    next(err)
+  }
+};
+
+module.exports = { getProducts, getSingleProduct };

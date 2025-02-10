@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
-app.use("/api/users", userRoutes)
+app.use("/api/users", userRoutes);
 
 app.all("*", (req, res, next) => {
   const err = new Error("404 not found");
