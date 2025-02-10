@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/home/Home";
+import Categories from "./pages/categories/Categories";
 import Shop from "./pages/shop/Shop";
 import SignIn from "./pages/signIn/SignIn";
 
@@ -14,6 +15,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout>
             <Home/>
+          </Layout>}/>
+          <Route path="/categories" element={<Layout>
+            <Categories/>
           </Layout>}/>
           <Route path="/shop" element={<Layout>
             <Shop/>

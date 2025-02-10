@@ -1,6 +1,7 @@
 import "./Shop.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import SingleProduct from "../../components/singleProduct/SingleProduct";
 
 const Shop = () => {
@@ -10,6 +11,8 @@ const Shop = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [defaultCategory, setDefaultCategory] = useState("All");
+  const location = useLocation();
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/categories?limit=6`)
@@ -19,10 +22,15 @@ const Shop = () => {
     .catch((err) => {
       console.log(err);
     });
-    getProducts(1, 6);
+    const category = new URLSearchParams(location.search).get("category");
+    if (category) {
+      getProducts(1, 6, category);
+    } else {
+      getProducts(1, 6);
+    }
   }, [])
 
-  const getProducts = (pageNumber, limit) => {
+  const getProducts = (pageNumber, limit, category = "") => {
     if (totalPages && pageNumber < 1) {
       return;
     } else if (totalPages && pageNumber > totalPages) {
@@ -30,7 +38,7 @@ const Shop = () => {
     }
     setProducts([]);
     window.scrollTo(0, 0);
-    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?page=${pageNumber}&limit=${limit}`)
+    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?page=${pageNumber}&limit=${limit}&search=${category}`)
     .then((res) => {
       if (res.data.isSuccessful) {
         setProducts(res.data.products);
@@ -44,9 +52,7 @@ const Shop = () => {
   };
 
   const getProductsByCategory = (e) => {
-    if (e.target.value === "Select a category") {
-      return;
-    } else if (e.target.value === "All") {
+    if (e.target.value === "All") {
       getProducts(1, itemsPerPage);
       return;
     }
@@ -91,8 +97,7 @@ const Shop = () => {
           <h3 className="text-3xl font-bold mt-1">Shop</h3>
           <form className="mt-4 sm:mt-1">
             <span>Category: </span>
-            <select className="border border-black" onChange={getProductsByCategory}>
-              <option value="Select a category">Select a category</option>
+            <select className="border border-black" defaultValue={defaultCategory} onChange={getProductsByCategory}>
               <option value="All">All</option>
               {categories.map((category) => <option key={category._id} value={category.category}>{category.category}</option>)}
             </select>

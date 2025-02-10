@@ -1,12 +1,13 @@
 import "./Home.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SingleProduct from "../../components/singleProduct/SingleProduct";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/categories?limit=6`)
@@ -32,7 +33,7 @@ const Home = () => {
         <div className="Home-top-banner-content text-white">
           <h3 className="text-3xl font-bold">Lorem Ipsum</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, esse! Commodi fuga unde earum temporibus eos.</p>
-          <button className="button-style bg-blue-300 text-black cursor-pointer px-4 py-2">Shop Now</button>
+          <button className="button-style bg-blue-300 text-black cursor-pointer px-4 py-2" onClick={() => navigate("/shop")}>Shop Now</button>
         </div>
       </div>
 
@@ -42,7 +43,7 @@ const Home = () => {
         {categories.map((category) => <div key={category._id}><Link className="Home-categories-link bg-blue-200">{category.category}</Link></div>)}
       </div>
       <div className="text-center mt-4 mb-16">
-        <button className="button-style bg-black text-white cursor-pointer px-4 py-2">View All</button>
+        <button className="button-style bg-black text-white cursor-pointer px-4 py-2" onClick={() => navigate("/categories")}>View All</button>
       </div>
 
       {/* ----- our products ----- */}
