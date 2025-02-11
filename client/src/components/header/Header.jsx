@@ -133,7 +133,7 @@ const Header = () => {
 
       {/* header mini-cart small */}
       <div className="Header-mini-cart-small Header-close-mini-cart-small" id="Header-mini-cart-small">
-        <div className="relative">
+        <div className="Header-mini-cart-small-close-button-div relative">
           <button className="Header-mini-cart-small-close-button absolute top-0 right-0 bg-gray-400 text-white cursor-pointer" onClick={closeMiniCartSmall}>
             <FontAwesomeIcon icon={faXmark}/>
           </button>

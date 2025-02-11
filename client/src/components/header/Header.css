@@ -125,6 +125,10 @@
   display: none;
 }
 
+.Header-mini-cart-small-close-button-div {
+  height: 30px;
+}
+
 .Header-mini-cart-small-close-button {
   width: 30px;
   height: 30px;

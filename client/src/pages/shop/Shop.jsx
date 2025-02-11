@@ -55,7 +55,9 @@ const Shop = () => {
   const getProductsByCategory = (e) => {
     setDefaultCategory(e.target.value);
     setSearch("");
-    if (e.target.value === "All") {
+    if (e.target.value === "Select a category") {
+      return;
+    } else if (e.target.value === "All") {
       getProducts(1, itemsPerPage);
       return;
     }
@@ -74,6 +76,7 @@ const Shop = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setDefaultCategory("Select a category");
     axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?page=${page}&limit=${itemsPerPage}&search=${search}`)
     .then((res) => {
       if (res.data.isSuccessful) {
@@ -101,6 +104,7 @@ const Shop = () => {
           <form className="mt-4 sm:mt-1">
             <span>Category: </span>
             <select className="border border-black" value={defaultCategory} onChange={getProductsByCategory}>
+              <option value="Select a category">Select a category</option>
               <option value="All">All</option>
               {categories.map((category) => <option key={category._id} value={category.category}>{category.category}</option>)}
             </select>
@@ -112,7 +116,7 @@ const Shop = () => {
       <div className="px-4 py-2">
         <div className="flex flex-col sm:flex-row justify-between">
           <form onSubmit={handleSearch} className="mt-1">
-            <input className="border border-black me-2 px-2 py-1" type="text" onChange={(e) => setSearch(e.target.value)}/>
+            <input className="border border-black me-2 px-2 py-1" type="text" value={search} onChange={(e) => setSearch(e.target.value)}/>
             <button className="bg-blue-300 px-2 py-1 cursor-pointer" type="submit">Search</button>
           </form>
           <form className="mt-1">
