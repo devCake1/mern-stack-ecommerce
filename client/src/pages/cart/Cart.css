@@ -1,0 +1,9 @@
+.Cart-item-image-td > img {
+  width: 100px;
+  height: 100px;
+}
+
+.Cart-item-quantity-button {
+  width: 30px;
+  height: 30px;
+}
