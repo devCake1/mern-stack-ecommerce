@@ -8,6 +8,7 @@ import Shop from "./pages/shop/Shop";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Cart from "./pages/cart/Cart";
 import SignIn from "./pages/signIn/SignIn";
+import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/sign-in" element={<Layout>
             <SignIn/>
           </Layout>}/>
+          <Route path="/dashboard" element={<DashboardHome/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
