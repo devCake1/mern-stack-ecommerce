@@ -42,9 +42,6 @@ const MiniCart = () => {
         <div className="p-2">
           <button className="w-full border border-2 border-black font-bold cursor-pointer py-2" onClick={() => navigate("/cart")}>View Full-Cart</button>
         </div>
-        <div className="p-2">
-          <button className="w-full border border-2 border-black font-bold cursor-pointer py-2">Buy Now</button>
-        </div>
       </div>}
     </div>
   );

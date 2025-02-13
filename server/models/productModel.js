@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const productSchema = new Schema({
-  imgURL: {
-    type: String,
-    required: [true, "Product's image URL is required"]
-  },
+  imgURL: String,
   productName: {
     type: String,
     required: [true, "Product name is required"]
