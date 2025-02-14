@@ -1,0 +1,19 @@
+.MyProfile > div {
+  max-width: 500px;
+}
+
+.MyProfile-picture-div {
+  width: 500px;
+  height: 500px;
+}
+
+.MyProfile-picture-div > input[type="file"] {
+  width: 200px;
+}
+
+@media only screen and (max-width: 640px) {
+  .MyProfile-picture-div {
+    width: 275px;
+    height: 275px;
+  }
+}

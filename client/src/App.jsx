@@ -9,6 +9,8 @@ import ProductDetails from "./pages/productDetails/ProductDetails";
 import Cart from "./pages/cart/Cart";
 import SignIn from "./pages/signIn/SignIn";
 import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
+import Overview from "./pages/dashboard/overview/Overview";
+import MyProfile from "./pages/dashboard/myProfile/MyProfile";
 
 function App() {
   return (
@@ -34,7 +36,10 @@ function App() {
           <Route path="/sign-in" element={<Layout>
             <SignIn/>
           </Layout>}/>
-          <Route path="/dashboard" element={<DashboardHome/>}></Route>
+          <Route path="/dashboard" element={<DashboardHome/>}>
+            <Route index element={<Overview/>}/>
+            <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

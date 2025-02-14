@@ -1,10 +1,34 @@
 import "./DashboardHome.css";
+import { useEffect } from "react";
 import { Navigate, Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faUser, faGift, faHouse, faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser, faGift, faHouse, faPowerOff, faFileLines } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardHome = () => {
   let showSidebar = true;
+  let x = window.matchMedia("(max-width: 768px)");
+
+  useEffect(() => {
+    changeSidebar();
+  }, [])
+
+  const changeSidebar = () => {
+    const sidebar = document.getElementById("DashboardHome-sidebar");
+    const componentDiv = document.getElementById("DashboardHome-component-div");
+    if (x.matches) {
+      sidebar.classList.replace("DashboardHome-sidebar-width-1", "DashboardHome-sidebar-width-2");
+      componentDiv.classList.replace("DashboardHome-component-div-width-1", "DashboardHome-component-div-width-2");
+      showSidebar = false;
+    } else {
+      sidebar.classList.replace("DashboardHome-sidebar-width-2", "DashboardHome-sidebar-width-1");
+      componentDiv.classList.replace("DashboardHome-component-div-width-2", "DashboardHome-component-div-width-1");
+      showSidebar = true;
+    }
+  };
+
+  x.addEventListener("change", () => {
+    changeSidebar();
+  });
 
   const toggleSidebar = () => {
     const sidebar = document.getElementById("DashboardHome-sidebar");
@@ -37,8 +61,11 @@ const DashboardHome = () => {
         </div>
         <div className="DashboardHome-main">
           <div className="DashboardHome-sidebar-width-1 float-left h-full bg-gray-900 text-white" id="DashboardHome-sidebar">
+            <div>
+              <Link to="/dashboard" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faFileLines}/> Overview</Link>
+            </div>
             {localStorage.getItem("isAdmin") === "false" && <div>
-              <Link to="" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
+              <Link to="/dashboard/my-profile" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
             </div>}
             {localStorage.getItem("isAdmin") === "false" && <div>
               <Link to="" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faGift}/> My Orders</Link>
@@ -50,7 +77,7 @@ const DashboardHome = () => {
               <Link to="" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faPowerOff}/> Sign Out</Link>
             </div>
           </div>
-          <div className="DashboardHome-component-div-width-1 float-left h-full" id="DashboardHome-component-div">
+          <div className="DashboardHome-component-div-width-1 float-left h-full overflow-auto p-4" id="DashboardHome-component-div">
             <Outlet/>
           </div>
         </div>
