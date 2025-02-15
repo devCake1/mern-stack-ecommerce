@@ -10,7 +10,7 @@ Collections:
 
 db.users.insertMany([
   {
-    "imgURL": "",
+    "imgPath": "",
     "firstName": "User",
     "lastName": "One",
     "email": "user.one@example.com",
@@ -18,7 +18,7 @@ db.users.insertMany([
     "isAdmin": true
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "firstName": "User",
     "lastName": "Two",
     "email": "user.two@example.com",

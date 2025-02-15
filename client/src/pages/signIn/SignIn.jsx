@@ -17,7 +17,7 @@ const SignIn = () => {
       if (res.data.isSuccessful) {
         setShowError("");
         localStorage.setItem("userId", res.data.user._id);
-        localStorage.setItem("imgURL", res.data.user.imgURL);
+        localStorage.setItem("imgPath", res.data.user.imgPath);
         localStorage.setItem("firstName", res.data.user.firstName);
         localStorage.setItem("lastName", res.data.user.lastName);
         localStorage.setItem("email", res.data.user.email);

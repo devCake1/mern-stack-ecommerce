@@ -49,7 +49,7 @@ const Cart = () => {
   const handleSessionExpired = () => {
     localStorage.clear();
     navigate("/sign-in");
-  }
+  };
 
   return (
     <div>
