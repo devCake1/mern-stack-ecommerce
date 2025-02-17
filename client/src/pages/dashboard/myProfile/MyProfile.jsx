@@ -3,6 +3,8 @@ import blankProfilePicture from "../../../assets/blank-profile-picture-973460_12
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const MyProfile = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -10,6 +12,7 @@ const MyProfile = () => {
   const [firstName, setFirstName] = useState(localStorage.getItem("firstName"));
   const [lastName, setLastName] = useState(localStorage.getItem("lastName"));
   const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [profileUpdateMessage, setProfileUpdateMessage] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [sessionExpired, setSessionExpired] = useState(false);
   const navigate = useNavigate();
@@ -41,6 +44,32 @@ const MyProfile = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
+    const profileInfo = { firstName, lastName, email, userId: localStorage.getItem("userId") };
+    axios.put(`${import.meta.env.VITE_SERVER_BASE_URL}/api/users/update-profile-info`, profileInfo, {
+      headers: {
+        signintoken: localStorage.getItem("signInToken")
+      }
+    })
+    .then((res) => {
+      localStorage.removeItem("firstName");
+      localStorage.setItem("firstName", res.data.user.firstName);
+      setFirstName(res.data.user.firstName)
+      localStorage.removeItem("lastName");
+      localStorage.setItem("lastName", res.data.user.lastName);
+      setLastName(res.data.user.lastName);
+      localStorage.removeItem("email");
+      localStorage.setItem("email", res.data.user.email);
+      setEmail(res.data.user.email);
+      setProfileUpdateMessage(res.data.message);
+      setIsEdit(false);
+    })
+    .catch((err) => {
+      if (err.response.data.message === "jwt expired") {
+        setSessionExpired(true);
+      } else {
+        console.log(err);
+      }
+    })
   };
 
   const handleChangePassword = (e) => {
@@ -56,6 +85,7 @@ const MyProfile = () => {
     <div>
       <h3 className="text-3xl font-bold pb-2 mb-8 border-b border-b-2 border-black">My Profile</h3>
       <div className="MyProfile-info mx-auto">
+        {/* change profile picture */}
         <form className="block w-full mb-4" onSubmit={uploadProfilePicture} encType="multipart/form-data">
           <div className="MyProfile-picture-div bg-gray-200 rounded-full mx-auto">
             {!profilePicturePath && <img src={blankProfilePicture} alt="" className="w-full h-full rounded-full"/>}
@@ -66,6 +96,8 @@ const MyProfile = () => {
             <button className="bg-blue-300 px-4 py-2 cursor-pointer" type="submit">Upload</button>
           </div>
         </form>
+
+        {/* update profile info */}
         <form className="block w-full mb-4" onSubmit={handleSave}>
           <h5 className="text-xl font-bold mt-10">First Name</h5>
           {!isEdit && <p className="bg-gray-200 p-1">{firstName}</p>}
@@ -76,12 +108,22 @@ const MyProfile = () => {
           <h5 className="text-xl font-bold mt-2">Email</h5>
           {!isEdit && <p className="bg-gray-200 p-1">{email}</p>}
           {isEdit && <input className="block w-full border border-black p-1" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>}
+          {profileUpdateMessage && <div className="close-MyProfile-update-message mt-2 bg-green-200" id="MyProfile-update-message">
+            <div className="flex justify-between p-2">
+              <p className="pe-2">{profileUpdateMessage}</p>
+              <button className="cursor-pointer" onClick={() => setProfileUpdateMessage("")}>
+                <FontAwesomeIcon icon={faCircleXmark}/>
+              </button>
+            </div>
+          </div>}
           <div className="mt-4">
             {!isEdit && <button className="bg-blue-300 px-4 py-2 cursor-pointer" onClick={() => setIsEdit(true)}>Edit</button>}
             {isEdit && <button className="bg-blue-300 px-4 py-2 cursor-pointer me-2" type="submit">Save</button>}
             {isEdit && <button className="bg-red-300 px-4 py-2 cursor-pointer" onClick={() => setIsEdit(false)}>Cancel</button>}
           </div>
         </form>
+
+        {/* change password */}
         <form onSubmit={handleChangePassword}>
           <h5 className="text-xl font-bold mb-2">Change Password</h5>
           <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="Current password" required/>

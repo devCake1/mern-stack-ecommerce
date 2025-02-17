@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const { signIn, changeProfilePicture } = require("../controllers/userControllers");
+const { signIn, changeProfilePicture, updateProfileInfo } = require("../controllers/userControllers");
 const isLoggedIn = require("../utility/isLoggedIn");
 const userRoutes = express.Router();
 
@@ -23,5 +23,8 @@ userRoutes.post("/sign-in", signIn);
 
 // PUT: /api/users/change-profile-picture
 userRoutes.put("/change-profile-picture", isLoggedIn, upload.single("profilePicture"), changeProfilePicture);
+
+// PUT: /api/users/update-profile-info
+userRoutes.put("/update-profile-info", isLoggedIn, updateProfileInfo);
 
 module.exports = userRoutes;

@@ -62,8 +62,7 @@ const Cart = () => {
         <table className="mx-auto">
           <thead>
             <tr>
-              <th className="px-4 py-2 bg-black text-white">Product Image</th>
-              <th className="px-4 py-2 bg-black text-white text-left">Product Name</th>
+              <th className="px-4 py-2 bg-black text-white" colSpan="2">Product</th>
               <th className="px-4 py-2 bg-black text-white">Price</th>
               <th className="px-4 py-2 bg-black text-white">Quantity</th>
               <th className="px-4 py-2 bg-black text-white">Subtotal</th>

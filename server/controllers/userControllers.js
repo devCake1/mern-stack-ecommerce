@@ -8,7 +8,7 @@ const signIn = async (req, res, next) => {
     const password = req.body.password;
     const user = await User.findOne({ email, password }, { password: 0 });
     if (user) {
-      const signInToken = jwt.sign({ usreId: user._id }, process.env.SIGNIN_KEY, { expiresIn: "1m" });
+      const signInToken = jwt.sign({ usreId: user._id }, process.env.SIGNIN_KEY, { expiresIn: "8h" });
       res.status(200).send({
         user,
         signInToken,
@@ -43,7 +43,7 @@ const changeProfilePicture = async (req, res, next) => {
     await User.findOneAndUpdate({ _id: userId }, { $set: { imgPath: imgPath } });
     res.status(200).send({
       imgPath,
-      message: "New profile profile picture uploaded successfully",
+      message: "New profile picture uploaded successfully",
       isSuccessful: true
     })
   } catch (err) {
@@ -51,4 +51,22 @@ const changeProfilePicture = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, changeProfilePicture };
+const updateProfileInfo = async (req, res, next) => {
+  try {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const userId = req.body.userId;
+    await User.findOneAndUpdate({ _id: userId }, { $set: { firstName: firstName, lastName: lastName, email: email } });
+    const user = await User.findOne({ _id: userId }, { password: 0 });
+    res.status(200).send({
+      user,
+      message: "Your profile info has been updated successfully",
+      isSuccessful: true
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { signIn, changeProfilePicture, updateProfileInfo };
