@@ -14,6 +14,11 @@ const MyProfile = () => {
   const [email, setEmail] = useState(localStorage.getItem("email"));
   const [profileUpdateMessage, setProfileUpdateMessage] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [changePasswordMessage, setChangePasswordMessage] = useState("");
+  const [changePasswordError, setChangePasswordError] = useState("");
   const [sessionExpired, setSessionExpired] = useState(false);
   const navigate = useNavigate();
 
@@ -74,6 +79,36 @@ const MyProfile = () => {
 
   const handleChangePassword = (e) => {
     e.preventDefault();
+    if (newPassword === confirmNewPassword) {
+      setChangePasswordError("");
+      const changePasswordData = { currentPassword, newPassword, userId: localStorage.getItem("userId") };
+      axios.put(`${import.meta.env.VITE_SERVER_BASE_URL}/api/users/change-password`, changePasswordData, {
+        headers: {
+          signintoken: localStorage.getItem("signInToken")
+        }
+      })
+      .then((res) => {
+        if (res.data.isSuccessful) {
+          setChangePasswordError("");
+          setCurrentPassword("");
+          setNewPassword("");
+          setConfirmNewPassword("");
+          setChangePasswordMessage(res.data.message);
+        } else {
+          setChangePasswordMessage("");
+          setChangePasswordError(res.data.message);
+        }
+      })
+      .catch((err) => {
+        if (err.response.data.message === "jwt expired") {
+          setSessionExpired(true);
+        } else {
+          console.log(err);
+        }
+      });
+    } else {
+      setChangePasswordError("New password and confirm new password do not match");
+    }
   };
 
   const handleSessionExpired = () => {
@@ -90,7 +125,7 @@ const MyProfile = () => {
           <div className="MyProfile-picture-div bg-gray-200 rounded-full mx-auto">
             {!profilePicturePath && <img src={blankProfilePicture} alt="" className="w-full h-full rounded-full"/>}
             {profilePicturePath && <img src={import.meta.env.VITE_SERVER_BASE_URL + "/" + profilePicturePath} alt="" className="w-full h-full rounded-full"/>}
-            <input className="block mx-auto mt-2 border border-black cursor-pointer px-1" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} required/>
+            <input className="block mx-auto mt-2 border border-black px-1" type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} required/>
           </div>
           <div className="text-center mt-10">
             <button className="bg-blue-300 px-4 py-2 cursor-pointer" type="submit">Upload</button>
@@ -125,15 +160,26 @@ const MyProfile = () => {
 
         {/* change password */}
         <form onSubmit={handleChangePassword}>
-          <h5 className="text-xl font-bold mb-2">Change Password</h5>
-          <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="Current password" required/>
-          <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="New password" required/>
-          <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="Confirm new password" required/>
-          <div>
+          <h5 className="text-xl font-bold mt-8 mb-4">Change Password</h5>
+          <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="Current password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required/>
+          <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="New password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required/>
+          <input className="block w-full border border-black p-1" type="password" placeholder="Confirm new password" value={confirmNewPassword} onChange={(e) => setConfirmNewPassword(e.target.value)} required/>
+          {changePasswordMessage && <div className="close-MyProfile-update-message mt-2 bg-green-200" id="MyProfile-update-message">
+            <div className="flex justify-between p-2">
+              <p className="pe-2">{changePasswordMessage}</p>
+              <button className="cursor-pointer" onClick={() => setChangePasswordMessage("")}>
+                <FontAwesomeIcon icon={faCircleXmark}/>
+              </button>
+            </div>
+          </div>}
+          {changePasswordError && <p className="text-red-600 py-1">{changePasswordError}</p>}
+          <div className="mt-4">
             <button className="bg-blue-300 px-4 py-2 cursor-pointer" type="submit">Change</button>
           </div>
         </form>
       </div>
+
+      {/* session expired modal div */}
       {sessionExpired && <div className="Session-expired-modal-div">
         <div className="Session-expired-modal bg-white p-4 text-center">
           <h3 className="text-3xl font-bold mb-4 text-blue-400">Session Expired</h3>

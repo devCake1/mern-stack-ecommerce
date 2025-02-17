@@ -69,4 +69,28 @@ const updateProfileInfo = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, changeProfilePicture, updateProfileInfo };
+const changePassword = async (req, res, next) => {
+  try {
+    const currentPassword = req.body.currentPassword;
+    const newPassword = req.body.newPassword;
+    const userId = req.body.userId;
+    const user = await User.findOne({ $and: [{ _id: userId }, { password: currentPassword }] }, { _id: 1 });
+    console.log(user);
+    if (!user) {
+      res.status(200).send({
+        message: "Current password is not correct. Please try again",
+        isSuccessful: false
+      })
+    } else {
+      await User.findOneAndUpdate({ _id: userId }, { $set: { password: newPassword } })
+      res.status(200).send({
+        message: "Your password has been changed successfully",
+        isSuccessful: true
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { signIn, changeProfilePicture, updateProfileInfo, changePassword };
