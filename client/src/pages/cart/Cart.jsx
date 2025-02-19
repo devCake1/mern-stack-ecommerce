@@ -22,11 +22,13 @@ const Cart = () => {
     }
     setShowError("");
     const newOrder = {
+      userId: localStorage.getItem("userId"),
       firsrName: localStorage.getItem("firstName"),
       lastName: localStorage.getItem("lastName"),
       email: localStorage.getItem("email"),
       cart: cart,
-      total: total
+      total: total,
+      payment: true
     };
     axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/api/orders`, newOrder, {
       headers: {

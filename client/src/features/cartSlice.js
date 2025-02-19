@@ -12,7 +12,8 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       const index = state.cart.findIndex((item) => item._id === action.payload._id);
       if (index === -1) {
-        const newProduct = { ...action.payload, quantity: 1 }
+        const newProduct = { ...action.payload, quantity: 1 };
+        delete newProduct.inStock;
         state.cart.push(newProduct);
         state.total += action.payload.price
       }
@@ -32,6 +33,7 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cart.splice(0, state.cart.length);
+      state.total = 0;
     }
   }
 });

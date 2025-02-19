@@ -3,6 +3,7 @@ const Order = require("../models/orderModel");
 const newOrder = async (req, res, next) => {
   try {
     const newOrder = new Order({
+      userId: req.body.userId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -21,4 +22,24 @@ const newOrder = async (req, res, next) => {
   }
 };
 
-module.exports = { newOrder };
+const myOrders = async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const userId = req.params.userId;
+    const shippingStatus = req.params.shippingStatus;
+    const page = req.params.page;
+    const result = await Order.find({ $and: [{ userId: userId }, { shippingStatus: shippingStatus }] }).skip(page - 1).limit(20);
+    const countResult = await Order.find({ $and: [{ userId: userId }, { shippingStatus: shippingStatus }] }).countDocuments();
+    console.log(result);
+    res.status(200).send({
+      result,
+      totalPages: Math.ceil(countResult / 20),
+      message: "",
+      isSuccessful: true
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { newOrder, myOrders };
