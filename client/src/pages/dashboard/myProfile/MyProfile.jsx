@@ -143,7 +143,7 @@ const MyProfile = () => {
           <h5 className="text-xl font-bold mt-2">Email</h5>
           {!isEdit && <p className="bg-gray-200 p-1">{email}</p>}
           {isEdit && <input className="block w-full border border-black p-1" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>}
-          {profileUpdateMessage && <div className="close-MyProfile-update-message mt-2 bg-green-200" id="MyProfile-update-message">
+          {profileUpdateMessage && <div className="mt-2 bg-green-200">
             <div className="flex justify-between p-2">
               <p className="pe-2">{profileUpdateMessage}</p>
               <button className="cursor-pointer" onClick={() => setProfileUpdateMessage("")}>
@@ -164,7 +164,7 @@ const MyProfile = () => {
           <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="Current password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required/>
           <input className="block w-full border border-black p-1 mb-2" type="password" placeholder="New password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required/>
           <input className="block w-full border border-black p-1" type="password" placeholder="Confirm new password" value={confirmNewPassword} onChange={(e) => setConfirmNewPassword(e.target.value)} required/>
-          {changePasswordMessage && <div className="close-MyProfile-update-message mt-2 bg-green-200" id="MyProfile-update-message">
+          {changePasswordMessage && <div className="mt-2 bg-green-200">
             <div className="flex justify-between p-2">
               <p className="pe-2">{changePasswordMessage}</p>
               <button className="cursor-pointer" onClick={() => setChangePasswordMessage("")}>

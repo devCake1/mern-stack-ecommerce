@@ -1,0 +1,26 @@
+.MyOrders-orders {
+  min-height: calc(100% - 121px);
+}
+
+.MyOrders-view-details-modal-div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.MyOrders-view-details-modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+}
+
+.MyOrders-item-image-td > img {
+  width: 100px;
+  height: 100px;
+}

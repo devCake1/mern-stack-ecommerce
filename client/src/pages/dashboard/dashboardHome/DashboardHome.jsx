@@ -68,7 +68,7 @@ const DashboardHome = () => {
               <Link to="/dashboard/my-profile" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
             </div>}
             {localStorage.getItem("isAdmin") === "false" && <div>
-              <Link to="" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faGift}/> My Orders</Link>
+              <Link to="/dashboard/my-orders" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faGift}/> My Orders</Link>
             </div>}
             <div>
               <Link to="/" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faHouse}/> Homepage</Link>

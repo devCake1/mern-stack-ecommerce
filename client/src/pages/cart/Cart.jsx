@@ -95,7 +95,7 @@ const Cart = () => {
               );
             })}
             <tr>
-              <td colSpan="5" className="text-right px-4 py-2">Total = ${total}</td>
+              <td colSpan="5" className="text-right px-4 py-2 font-bold">Total = ${total}</td>
             </tr>
             <tr>
               <td colSpan="5" className="py-2">

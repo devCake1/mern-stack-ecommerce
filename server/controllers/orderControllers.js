@@ -24,13 +24,11 @@ const newOrder = async (req, res, next) => {
 
 const myOrders = async (req, res, next) => {
   try {
-    console.log(req.params);
     const userId = req.params.userId;
     const shippingStatus = req.params.shippingStatus;
     const page = req.params.page;
     const result = await Order.find({ $and: [{ userId: userId }, { shippingStatus: shippingStatus }] }).skip(page - 1).limit(20);
     const countResult = await Order.find({ $and: [{ userId: userId }, { shippingStatus: shippingStatus }] }).countDocuments();
-    console.log(result);
     res.status(200).send({
       result,
       totalPages: Math.ceil(countResult / 20),

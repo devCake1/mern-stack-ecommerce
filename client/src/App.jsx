@@ -11,6 +11,7 @@ import SignIn from "./pages/signIn/SignIn";
 import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
 import Overview from "./pages/dashboard/overview/Overview";
 import MyProfile from "./pages/dashboard/myProfile/MyProfile";
+import MyOrders from "./pages/dashboard/myOrders/MyOrders";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardHome/>}>
             <Route index element={<Overview/>}/>
             <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+            <Route path="/dashboard/my-orders" element={<MyOrders/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
