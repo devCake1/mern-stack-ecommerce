@@ -1,0 +1,21 @@
+.Orders-div {
+  min-height: calc(100% - 121px);
+}
+
+.Orders-view-details-modal-div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Orders-view-details-modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+}

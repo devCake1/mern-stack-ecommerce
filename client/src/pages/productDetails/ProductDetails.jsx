@@ -21,7 +21,7 @@ const ProductDetails = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 mx-4 my-2">
       <div className="p-2">
-        {!product.imgURL && <img src={defaultImage} alt="" />}
+        {!product.imgPath && <img src={defaultImage} alt="" />}
       </div>
       <div className="p-2">
         <h3 className="font-bold text-3xl mb-2">{product.productName}</h3>

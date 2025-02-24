@@ -61,12 +61,15 @@ const DashboardHome = () => {
         </div>
         <div className="DashboardHome-main">
           <div className="DashboardHome-sidebar-width-1 float-left h-full bg-gray-900 text-white" id="DashboardHome-sidebar">
-            <div>
+            {localStorage.isAdmin === "true" && <div>
               <Link to="/dashboard" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faFileLines}/> Overview</Link>
-            </div>
-            {localStorage.getItem("isAdmin") === "false" && <div>
-              <Link to="/dashboard/my-profile" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
             </div>}
+            {localStorage.isAdmin === "true" && <div>
+              <Link to="/dashboard/orders" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faFileLines}/> Orders</Link>
+            </div>}
+            <div>
+              <Link to="/dashboard/my-profile" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
+            </div>
             {localStorage.getItem("isAdmin") === "false" && <div>
               <Link to="/dashboard/my-orders" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faGift}/> My Orders</Link>
             </div>}

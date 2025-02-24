@@ -23,7 +23,7 @@ const Cart = () => {
     setShowError("");
     const newOrder = {
       userId: localStorage.getItem("userId"),
-      firsrName: localStorage.getItem("firstName"),
+      firstName: localStorage.getItem("firstName"),
       lastName: localStorage.getItem("lastName"),
       email: localStorage.getItem("email"),
       cart: cart,
@@ -45,7 +45,7 @@ const Cart = () => {
       } else {
         console.log(err);
       }
-    })
+    });
   };
 
   const handleSessionExpired = () => {
@@ -75,7 +75,7 @@ const Cart = () => {
               return (
                 <tr key={item._id} className="border-b border-black">
                   <td className="Cart-item-image-td px-4 py-2">
-                    {!item.imgURL && <img src={defaultImage} alt=""/>}
+                    {!item.imgPath && <img src={defaultImage} alt=""/>}
                   </td>
                   <td className="px-4 py-2 text-xl font-bold text-left">{item.productName}</td>
                   <td className="px-4 py-2">${item.price}</td>

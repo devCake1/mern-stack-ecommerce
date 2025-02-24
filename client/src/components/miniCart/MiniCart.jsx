@@ -21,7 +21,7 @@ const MiniCart = () => {
           return (
             <div key={item._id} className="grid grid-cols-3 gap-2 mb-2">
               <div className="MiniCart-item-image">
-                {!item.imgURL && <img src={defaultImage} alt="" className="w-full h-full"/>}
+                {!item.imgPath && <img src={defaultImage} alt="" className="w-full h-full"/>}
               </div>
               <div className="col-span-2">
                 <h5 className="text-xl font-bold mb-1">{item.productName}</h5>

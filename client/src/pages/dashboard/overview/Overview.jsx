@@ -1,7 +1,12 @@
+import { Navigate } from "react-router-dom";
+
 const Overview = () => {
   return (
     <div>
-      this is Overview page
+      {(localStorage.getItem("isAdmin") === "false") && <Navigate to="/dashboard/my-profile"/>}
+      {localStorage.getItem("isAdmin") === "true" && <div>
+        this is Overview page
+      </div>}
     </div>
   );
 };

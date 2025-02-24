@@ -41,7 +41,7 @@ db.categories.insertMany([
 
 db.products.insertMany([
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Mobile Phone 1",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Mobile Phone",
@@ -50,7 +50,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Watch 1",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Watch",
@@ -59,7 +59,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Watch 2",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Watch",
@@ -68,7 +68,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Mobile Phone 2",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Mobile Phone",
@@ -77,7 +77,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Headphone 1",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Headphone",
@@ -86,7 +86,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Watch 3",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Watch",
@@ -95,7 +95,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Headphone 2",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Headphone",
@@ -104,7 +104,7 @@ db.products.insertMany([
     "inStock": 8
   },
   {
-    "imgURL": "",
+    "imgPath": "",
     "productName": "Watch 4",
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
     "category": "Watch",
