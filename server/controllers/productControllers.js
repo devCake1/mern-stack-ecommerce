@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Product = require("../models/productModel");
 
 const getProducts = async (req, res, next) => {
@@ -52,4 +53,55 @@ const getSingleProduct = async (req, res, next) => {
   }
 };
 
-module.exports = { getProducts, getSingleProduct };
+const changeProductImage = async (req, res, next) => {
+  try {
+    const productId = req.body.productId;
+    const imgPath = `uploads/${req.file.filename}`;
+    const prevImgPath = await Product.findOne({ _id: productId }, { _id: 0, imgPath: 1 });
+    if (prevImgPath.imgPath) {
+      fs.unlink(prevImgPath.imgPath, (err) => {
+        if (err) {
+          next(err);
+        } else {
+          console.log(`${prevImgPath.imgPath} was deleted`);
+        }
+      });
+    }
+    await Product.findOneAndUpdate({ _id: productId }, { $set: { imgPath: imgPath } });
+    res.status(200).send({
+      imgPath,
+      message: "New product image uploaded successfully",
+      isSuccessful: true
+    })
+  } catch (err) {
+    next(err);
+  }
+};
+
+const updateProductData = async (req, res, next) => {
+  try {
+    const productId = req.body.productId;
+    const productName = req.body.productName;
+    const description = req.body.description;
+    const category = req.body.category;
+    const discount = req.body.discount;
+    const price = req.body.price;
+    const inStock = req.body.inStock;
+    await Product.findOneAndUpdate({ _id: productId }, { $set: {
+      productName: productName,
+      description: description,
+      category: category,
+      discount: discount,
+      price: price,
+      inStock: inStock
+    } });
+    res.status(200).send({
+      message: "Product data has been updated successfully",
+      isSuccessful: true
+    })
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getProducts, getSingleProduct, changeProductImage, updateProductData };

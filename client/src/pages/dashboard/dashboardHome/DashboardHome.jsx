@@ -2,7 +2,7 @@ import "./DashboardHome.css";
 import { useEffect } from "react";
 import { Navigate, Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faUser, faGift, faHouse, faPowerOff, faFileLines } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser, faGift, faHouse, faPowerOff, faFileLines, faCartPlus, faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardHome = () => {
   let showSidebar = true;
@@ -65,7 +65,10 @@ const DashboardHome = () => {
               <Link to="/dashboard" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faFileLines}/> Overview</Link>
             </div>}
             {localStorage.isAdmin === "true" && <div>
-              <Link to="/dashboard/orders" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faFileLines}/> Orders</Link>
+              <Link to="/dashboard/orders" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faCartPlus}/> Orders</Link>
+            </div>}
+            {localStorage.isAdmin === "true" && <div>
+              <Link to="/dashboard/products" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faBagShopping}/> Products</Link>
             </div>}
             <div>
               <Link to="/dashboard/my-profile" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
