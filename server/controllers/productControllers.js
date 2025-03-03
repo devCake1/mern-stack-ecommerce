@@ -84,9 +84,9 @@ const updateProductData = async (req, res, next) => {
     const productName = req.body.productName;
     const description = req.body.description;
     const category = req.body.category;
-    const discount = req.body.discount;
-    const price = req.body.price;
-    const inStock = req.body.inStock;
+    const discount = parseInt(req.body.discount);
+    const price = parseInt(req.body.price);
+    const inStock = parseInt(req.body.inStock);
     await Product.findOneAndUpdate({ _id: productId }, { $set: {
       productName: productName,
       description: description,
@@ -104,4 +104,32 @@ const updateProductData = async (req, res, next) => {
   }
 };
 
-module.exports = { getProducts, getSingleProduct, changeProductImage, updateProductData };
+const addNewProduct = async (req, res, next) => {
+  try {
+    const imgPath = `uploads/${req.file.filename}`;
+    const productName = req.body.productName;
+    const description = req.body.description;
+    const category = req.body.category;
+    const discount = parseInt(req.body.discount);
+    const price = parseInt(req.body.price);
+    const inStock = parseInt(req.body.inStock);
+    const newProduct = new Product({
+      imgPath,
+      productName,
+      description,
+      category,
+      discount,
+      price,
+      inStock
+    });
+    await newProduct.save();
+    res.status(200).send({
+      message: "New product has been added successfully",
+      isSuccessful: true
+    })
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getProducts, getSingleProduct, changeProductImage, updateProductData, addNewProduct };

@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const { getProducts, getSingleProduct, changeProductImage, updateProductData } = require("../controllers/productControllers");
+const { getProducts, getSingleProduct, changeProductImage, updateProductData, addNewProduct } = require("../controllers/productControllers");
 const isLoggedIn = require("../utility/isLoggedIn");
 const isAdmin = require("../utility/isAdmin");
 const productRoutes = express.Router();
@@ -18,6 +18,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+// POST: /api/products
+productRoutes.post("/", isLoggedIn, isAdmin, upload.single("productImage"), addNewProduct);
 
 // GET: /api/products
 productRoutes.get("/", getProducts);
