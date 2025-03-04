@@ -132,4 +132,17 @@ const addNewProduct = async (req, res, next) => {
   }
 };
 
-module.exports = { getProducts, getSingleProduct, changeProductImage, updateProductData, addNewProduct };
+const deleteProduct = async (req, res, next) => {
+  try {
+    const productId = req.params.productId;
+    await Product.deleteOne({ _id: productId });
+    res.status(200).send({
+      message: "The product has been deleted successfully",
+      isSuccessful: true
+    })
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getProducts, getSingleProduct, changeProductImage, updateProductData, addNewProduct, deleteProduct };

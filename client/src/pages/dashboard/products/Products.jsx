@@ -38,15 +38,20 @@ const Products = () => {
     getProducts(1, 6);
   }, []);
 
-  const getProducts = (pageNumber, limit) => {
+  const getProducts = (pageNumber, limit, category="") => {
     if (pageNumber < 1) {
       return;
     } else if (pageNumber > totalPages) {
       return;
     }
+    if (category === "Select a category") {
+      category = "";
+    } else if (category === "All") {
+      category = "";
+    }
     setProducts([]);
     window.scrollTo(0, 0);
-    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?page=${pageNumber}&limit=${limit}`)
+    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?page=${pageNumber}&limit=${limit}&search=${category}`)
     .then((res) => {
       setProducts(res.data.products);
       setTotalPages(res.data.totalPages);
@@ -109,6 +114,7 @@ const Products = () => {
       setDiscount("");
       setPrice("");
       setInStock("");
+      getProducts(page, itemsPerPage, defaultCategory);
     })
     .catch((err) => {
       if (err.response.data.message === "jwt expired") {
@@ -160,7 +166,7 @@ const Products = () => {
 
         {/* products */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {products.map((product) => <SingleItem key={product._id} product={product} categories={categories}/>)}
+          {products.map((product) => <SingleItem key={product._id} product={product} categories={categories} getProducts={getProducts} page={page} itemsPerPage={itemsPerPage} defaultCategory={defaultCategory}/>)}
         </div>
 
         {/* pagination */}

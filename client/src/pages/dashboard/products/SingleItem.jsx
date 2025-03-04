@@ -16,8 +16,9 @@ const SingleItem = (props) => {
   const [price, setPrice] = useState(props.product.price);
   const [inStock, setInStock] = useState(props.product.inStock);
   const [productUpdateMessage, setProductUpdateMessage] = useState("");
-
   const [isEdit, setIsEdit] = useState(false);
+  const [confirmDeleteModal, setConfirmDeleteModal] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState("");
   const [sessionExpired, setSessionExpired] = useState(false);
   const navigate = useNavigate();
 
@@ -82,7 +83,28 @@ const SingleItem = (props) => {
     setPrice(props.product.price)
     setInStock(props.product.inStock);
     setIsEdit(false);
-  }
+  };
+
+  const handleDelete = () => {
+    const productId = props.product._id;
+    axios.delete(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products/${productId}`, {
+      headers: {
+        signintoken: localStorage.getItem("signInToken"),
+        userid: localStorage.getItem("userId")
+      }
+    })
+    .then((res) => {
+      setDeleteMessage(res.data.message);
+      props.getProducts(props.page, props.itemsPerPage, props.defaultCategory);
+    })
+    .catch((err) => {
+      if (err.response.data.message === "jwt expired") {
+        setSessionExpired(true);
+      } else {
+        console.log(err);
+      }
+    });
+  };
 
   const handleSessionExpired = () => {
     localStorage.clear();
@@ -139,7 +161,25 @@ const SingleItem = (props) => {
       </div>}
       {!isEdit && <div className="text-center mt-4">
         <button className="bg-blue-300 px-4 py-2 cursor-pointer" onClick={() => setIsEdit(true)}>Edit</button>&nbsp;
-        <button className="bg-red-300 px-4 py-2 cursor-pointer">Delete</button>
+        <button className="bg-red-300 px-4 py-2 cursor-pointer" onClick={() => setConfirmDeleteModal(true)}>Delete</button>
+      </div>}
+
+      {/* confirm delete product modal div */}
+      {confirmDeleteModal && <div className="SingleItem-confirm-delete-modal-div">
+        <div className="SingleItem-confirm-delete-modal bg-white p-4">
+          {!deleteMessage && <h6 className="text-lg font-bold text-center mb-2">Do you want to delete this ptoduct?</h6>}
+          {deleteMessage && <h6 className="text-lg font-bold text-center mb-2">{deleteMessage}</h6>}
+          {!deleteMessage && <div className="text-center">
+            <button className="px-4 py-2 bg-red-300 cursor-pointer" onClick={handleDelete}>Delete</button>&nbsp;
+            <button className="px-4 py-2 bg-gray-300 cursor-pointer" onClick={() => setConfirmDeleteModal(false)}>Cancel</button>
+          </div>}
+          {deleteMessage && <div className="text-center">
+            <button className="px-4 py-2 bg-blue-300 cursor-pointer" onClick={() => {
+              setConfirmDeleteModal(false);
+              setDeleteMessage("");
+            }}>Ok</button>
+          </div>}
+        </div>
       </div>}
 
       {/* session expired modal div */}

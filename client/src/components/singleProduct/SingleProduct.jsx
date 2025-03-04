@@ -11,7 +11,8 @@ const SingleProduct = (props) => {
   return (
     <div className="SingleProduct p-4">
       <div className="SingleProduct-image-div">
-        {props.product.imgPath === "" && <img src={defaultImage} alt="" className="block w-full h-full"/>}
+        {!props.product.imgPath && <img src={defaultImage} alt="" className="block w-full h-full"/>}
+        {props.product.imgPath && <img src={`${import.meta.env.VITE_SERVER_BASE_URL}/${props.product.imgPath}`} alt="" className="block w-full h-full"/>}
       </div>
       <h3 className="SingleProduct-product-name font-bold">{props.product.productName}</h3>
       <p className="SingleProduct-description">{props.product.description}</p>

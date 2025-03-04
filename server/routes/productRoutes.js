@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const { getProducts, getSingleProduct, changeProductImage, updateProductData, addNewProduct } = require("../controllers/productControllers");
+const { getProducts, getSingleProduct, changeProductImage, updateProductData, addNewProduct, deleteProduct } = require("../controllers/productControllers");
 const isLoggedIn = require("../utility/isLoggedIn");
 const isAdmin = require("../utility/isAdmin");
 const productRoutes = express.Router();
@@ -33,5 +33,8 @@ productRoutes.put("/change-product-image", isLoggedIn, isAdmin, upload.single("p
 
 // PUT: /api/products/update-product-data
 productRoutes.put("/update-product-data", isLoggedIn, isAdmin, updateProductData);
+
+// DELETE: /api/products/:productId
+productRoutes.delete("/:productId", isLoggedIn, isAdmin, deleteProduct);
 
 module.exports = productRoutes;
