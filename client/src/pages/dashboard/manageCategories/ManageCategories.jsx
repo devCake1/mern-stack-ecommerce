@@ -1,9 +1,9 @@
-import "./EditCategories.css";
+import "./ManageCategories.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
-const EditCategories = () => {
+const ManageCategories = () => {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
   const [newCategoryModal, setNewCategoryModal] = useState(false);
@@ -99,8 +99,8 @@ const EditCategories = () => {
         </div>
 
         {/* add new category modal div */}
-        {newCategoryModal && <div className="EditCategories-modal-div">
-          <div className="EditCategories-modal bg-white">
+        {newCategoryModal && <div className="ManageCategories-modal-div">
+          <div className="ManageCategories-modal bg-white">
             <h5 className="text-xl font-bold p-2 bg-blue-200">Add New Category</h5>
             <form className="block p-2" onSubmit={addNewCategory}>
               <h6 className="text-lg font-bold">Category Name:</h6>
@@ -117,13 +117,13 @@ const EditCategories = () => {
         </div>}
 
         {/* delete a category modal div */}
-        {deleteCategoryModal && <div className="EditCategories-modal-div">
-          <div className="EditCategories-modal bg-white">
+        {deleteCategoryModal && <div className="ManageCategories-modal-div">
+          <div className="ManageCategories-modal bg-white">
             <h5 className="text-xl font-bold p-2 bg-blue-200">Delete a Category</h5>
             <form className="block p-2" onSubmit={deleteCategory}>
               <h6 className="text-lg font-bold">Category ID:</h6>
               <div>
-                <input className="border border-black p-1" id="EditCategories-category-id-to-delete" type="text" value={categoryIdToDelete} onChange={(e) => setCategoryIdToDelete(e.target.value)} required/> <button className="border border-orange-300 bg-orange-300 cursor-pointer p-1" onClick={pasteId}>Paste ID</button>
+                <input className="border border-black p-1" type="text" value={categoryIdToDelete} onChange={(e) => setCategoryIdToDelete(e.target.value)} required/> <button className="border border-orange-300 bg-orange-300 cursor-pointer p-1" onClick={pasteId}>Paste ID</button>
               </div>
               <div className="text-center mt-2">
                 <button className="px-4 py-2 bg-red-300 cursor-pointer" type="submit">Delete</button>&nbsp;
@@ -140,4 +140,4 @@ const EditCategories = () => {
   );
 };
 
-export default EditCategories;
+export default ManageCategories;

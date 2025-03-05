@@ -73,7 +73,7 @@ const Header = () => {
               <Link to="/sign-in" className="Header-dropdown-link hover:bg-blue-300">Sign In</Link>
             </div>}
             {!localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
-              <Link to="" className="Header-dropdown-link hover:bg-blue-300">Sign Up</Link>
+              <Link to="/sign-up" className="Header-dropdown-link hover:bg-blue-300">Sign Up</Link>
             </div>}
             {localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
               <Link to="/dashboard" className="Header-dropdown-link hover:bg-blue-300">Dashboard</Link>
@@ -119,7 +119,7 @@ const Header = () => {
               <Link to="/sign-in" className="Header-sidebar-dropdown-link">Sign In</Link>
             </div>}
             {!localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">
-              <Link to="" className="Header-sidebar-dropdown-link">Sign Up</Link>
+              <Link to="/sign-up" className="Header-sidebar-dropdown-link">Sign Up</Link>
             </div>}
             {localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">
               <Link to="/dashboard" className="Header-sidebar-dropdown-link">Dashboard</Link>

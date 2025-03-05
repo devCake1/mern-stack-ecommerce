@@ -1,4 +1,4 @@
-.EditCategories-modal-div {
+.ManageCategories-modal-div {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.EditCategories-modal {
+.ManageCategories-modal {
   position: relative;
   top: 60px;
   left: 50%;
