@@ -12,6 +12,7 @@ import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
 import Overview from "./pages/dashboard/overview/Overview";
 import Orders from "./pages/dashboard/orders/Orders";
 import Products from "./pages/dashboard/products/Products";
+import EditCategories from "./pages/dashboard/editCategories/EditCategories";
 import MyProfile from "./pages/dashboard/myProfile/MyProfile";
 import MyOrders from "./pages/dashboard/myOrders/MyOrders";
 
@@ -43,6 +44,7 @@ function App() {
             <Route index element={<Overview/>}/>
             <Route path="/dashboard/orders" element={<Orders/>}/>
             <Route path="/dashboard/products" element={<Products/>}/>
+            <Route path="/dashboard/categories" element={<EditCategories/>}/>
             <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
             <Route path="/dashboard/my-orders" element={<MyOrders/>}/>
           </Route>
