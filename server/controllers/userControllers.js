@@ -26,6 +26,33 @@ const signIn = async (req, res, next) => {
   }
 };
 
+const signUp = async (req, res, next) => {
+  try {
+    const imgPath = "";
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const isAdmin = false;
+    const user = await User.findOne({ email: email });
+    if (user !== null) {
+      res.status(200).send({
+        message: "An account with this email already exists. Please enter another email",
+        isSuccessful: false
+      });
+    } else {
+      const newUser = new User({ imgPath, firstName, lastName, email, password, isAdmin });
+      await newUser.save();
+      res.status(201).send({
+        message: "Your account has been successfully created",
+        isSuccessful: true
+      });
+    }
+  } catch (err) {
+    next(err)
+  }
+};
+
 const changeProfilePicture = async (req, res, next) => {
   try {
     const userId = req.body.userId;
@@ -93,4 +120,4 @@ const changePassword = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, changeProfilePicture, updateProfileInfo, changePassword };
+module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword };

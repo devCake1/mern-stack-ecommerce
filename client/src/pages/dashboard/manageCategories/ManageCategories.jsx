@@ -1,7 +1,7 @@
 import "./ManageCategories.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ManageCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -9,6 +9,8 @@ const ManageCategories = () => {
   const [newCategoryModal, setNewCategoryModal] = useState(false);
   const [categoryIdToDelete, setCategoryIdToDelete] = useState("");
   const [deleteCategoryModal, setDeleteCategoryModal] = useState(false);
+  const [sessionExpired, setSessionExpired] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCategories();
@@ -39,7 +41,12 @@ const ManageCategories = () => {
       setNewCategoryModal(false);
     })
     .catch((err) => {
-      console.log(err);
+      if (err.response.data.message === "jwt expired") {
+        setNewCategoryModal(false);
+        setSessionExpired(true);
+      } else {
+        console.log(err);
+      }
     });
   };
 
@@ -57,7 +64,12 @@ const ManageCategories = () => {
       setDeleteCategoryModal(false);
     })
     .catch((err) => {
-      console.log(err);
+      if (err.response.data.message === "jwt expired") {
+        setDeleteCategoryModal(false);
+        setSessionExpired(true);
+      } else {
+        console.log(err);
+      }
     });
   };
 
@@ -69,6 +81,11 @@ const ManageCategories = () => {
   const pasteId = async () => {
     const textToPaste = await navigator.clipboard.readText();
     setCategoryIdToDelete(textToPaste);
+  };
+
+  const handleSessionExpired = () => {
+    localStorage.clear();
+    navigate("/sign-in");
   };
 
   return (
@@ -133,6 +150,15 @@ const ManageCategories = () => {
                 }}>Close</button>
               </div>
             </form>
+          </div>
+        </div>}
+
+        {/* session expired modal div */}
+        {sessionExpired && <div className="Session-expired-modal-div">
+          <div className="Session-expired-modal bg-white p-4 text-center">
+            <h3 className="text-3xl font-bold mb-4 text-blue-400">Session Expired</h3>
+            <p className="mb-6">Sorry, your session has expired. Please sign-in again</p>
+            <button className="px-4 py-2 bg-blue-300 cursor-pointer" onClick={handleSessionExpired}>Ok</button>
           </div>
         </div>}
       </div>}

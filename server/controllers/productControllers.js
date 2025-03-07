@@ -135,6 +135,16 @@ const addNewProduct = async (req, res, next) => {
 const deleteProduct = async (req, res, next) => {
   try {
     const productId = req.params.productId;
+    const productData = await Product.findOne({ _id: productId }, { _id: 0, imgPath: 1 });
+    if (productData.imgPath) {
+      fs.unlink(productData.imgPath, (err) => {
+        if (err) {
+          next(err);
+        } else {
+          console.log(`${productData.imgPath} was deleted`);
+        }
+      });
+    }
     await Product.deleteOne({ _id: productId });
     res.status(200).send({
       message: "The product has been deleted successfully",

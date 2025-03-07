@@ -50,7 +50,7 @@ const SignIn = () => {
           <button className="cursor-pointer bg-blue-300 px-4 py-2" type="submit">Submit</button>
         </div>
       </form>
-      <p className="mt-4">Do not have an account? <Link to="" className="underline underline-offset-8">Sign Up</Link> here.</p>
+      <p className="mt-4">Do not have an account? <Link to="/sign-up" className="underline underline-offset-8">Sign Up</Link> here.</p>
     </div>
   )
 };

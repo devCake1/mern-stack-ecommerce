@@ -136,6 +136,7 @@ const MyOrders = () => {
           </div>
         </div>}
 
+        {/* view details modal div */}
         {viewOrder && <div className="MyOrders-view-details-modal-div">
           <div className="MyOrders-view-details-modal bg-white overflow-y-auto">
             <ViewDetails order={viewOrder}/>
