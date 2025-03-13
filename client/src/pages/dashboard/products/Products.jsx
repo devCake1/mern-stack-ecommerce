@@ -135,7 +135,7 @@ const Products = () => {
       {localStorage.getItem("isAdmin") === "false" && <Navigate to="/dashboard/my-profile"/>}
       {localStorage.getItem("isAdmin") === "true" && <div>
         {/* products heading and category selection */}
-        <div className="py-2">
+        <div>
           <div className="flex flex-col sm:flex-row justify-between border-b-2 border-black pb-1">
             <h3 className="text-3xl font-bold mt-1">Products</h3>
             <form className="mt-4 sm:mt-1">

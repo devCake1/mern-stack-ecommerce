@@ -1,7 +1,8 @@
 const express = require("express");
 const multer = require("multer");
-const { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword } = require("../controllers/userControllers");
+const { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser } = require("../controllers/userControllers");
 const isLoggedIn = require("../utility/isLoggedIn");
+const isAdmin = require("../utility/isAdmin");
 const userRoutes = express.Router();
 
 // const upload = multer({ dest: './uploads/' })
@@ -17,6 +18,12 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+// GET: /api/users
+userRoutes.get("/", isLoggedIn, isAdmin, getAllUsers);
+
+// GET: /api/users
+userRoutes.get("/:email", isLoggedIn, isAdmin, getSingleUser);
 
 // POST: /api/users/sign-in
 userRoutes.post("/sign-in", signIn);

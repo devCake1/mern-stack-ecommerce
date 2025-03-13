@@ -33,7 +33,6 @@ const signUp = async (req, res, next) => {
     const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
-    const isAdmin = false;
     const user = await User.findOne({ email: email });
     if (user !== null) {
       res.status(200).send({
@@ -41,7 +40,7 @@ const signUp = async (req, res, next) => {
         isSuccessful: false
       });
     } else {
-      const newUser = new User({ imgPath, firstName, lastName, email, password, isAdmin });
+      const newUser = new User({ imgPath, firstName, lastName, email, password });
       await newUser.save();
       res.status(201).send({
         message: "Your account has been successfully created",
@@ -120,4 +119,46 @@ const changePassword = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword };
+const getAllUsers = async (req, res, next) => {
+  try {
+    const page = req.query.page;
+    const limit = req.query.limit;
+    const role = req.query.role;
+    let isAdmin = false;
+    if (role === "Admin") {
+      isAdmin = true;
+    }
+    let filter = { isAdmin: isAdmin };
+    const users = await User.find(filter, { password: 0 }).skip((page - 1) * limit).limit(limit);
+    res.status(200).send({
+      users,
+      message: "",
+      isSuccessful: true
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getSingleUser = async (req, res, next) => {
+  try {
+    const email = req.params.email;
+    const user = await User.findOne({ email: email }, { password: 0 });
+    if (user) {
+      res.status(200).send({
+        user,
+        message: "",
+        isSuccessful: true
+      });
+    } else {
+      res.status(200).send({
+        message: "No result found",
+        isSuccessful: false
+      })
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser };

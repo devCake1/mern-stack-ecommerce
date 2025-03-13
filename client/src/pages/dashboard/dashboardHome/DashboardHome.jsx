@@ -2,7 +2,7 @@ import "./DashboardHome.css";
 import { useEffect } from "react";
 import { Navigate, Link, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faUser, faGift, faHouse, faPowerOff, faFileLines, faCartPlus, faBagShopping, faList } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser, faGift, faHouse, faPowerOff, faFileLines, faCartPlus, faBagShopping, faList, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardHome = () => {
   let showSidebar = true;
@@ -72,6 +72,9 @@ const DashboardHome = () => {
             </div>}
             {localStorage.isAdmin === "true" && <div>
               <Link to="/dashboard/categories" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faList}/> Categories</Link>
+            </div>}
+            {localStorage.isAdmin === "true" && <div>
+              <Link to="/dashboard/users" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUsers}/> Users</Link>
             </div>}
             <div>
               <Link to="/dashboard/my-profile" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faUser}/> My Profile</Link>
