@@ -10,17 +10,25 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [defaultRole, setDefaultRole] = useState("User");
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
   const [rowsPerPage, setRowsPerPage] = useState(6);
   const [email, setEmail] = useState("");
   const [showMessage, setShowMessage] = useState("");
 
   useEffect(() => {
-    getUsers(1, 6, "User")
+    getUsers(1, 6, "User");
   }, []);
 
   const getUsers = (pageNumber, limit, role) => {
+    if (pageNumber < 1) {
+      return;
+    } else if (totalPages && pageNumber > totalPages) {
+      return;
+    }
+    setUsers([]);
     setShowMessage("");
     setEmail("");
+    window.scrollTo(0, 0);
     axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/users?page=${pageNumber}&limit=${limit}&role=${role}`, {
       headers: {
         signintoken: localStorage.getItem("signInToken"),
@@ -30,6 +38,7 @@ const Users = () => {
     .then((res) => {
       setUsers(res.data.users);
       setPage(pageNumber);
+      setTotalPages(res.data.totalPages);
     })
     .catch((err) => {
       console.log(err);
@@ -56,6 +65,7 @@ const Users = () => {
       }
     })
     .then((res) => {
+      setTotalPages(null);
       if (res.data.isSuccessful) {
         setUsers([res.data.user]);
         if (res.data.user.isAdmin) {
@@ -110,7 +120,7 @@ const Users = () => {
         </div>
 
         {/* users */}
-        <div className="overflow-x-auto mt-4">
+        <div className="Users-div overflow-x-auto mt-4">
           <table className="w-full">
             <thead>
               <tr>
@@ -144,6 +154,14 @@ const Users = () => {
             </tbody>
           </table>
         </div>
+
+        {/* pagination */}
+        {totalPages && <div className="text-center mt-2">
+          <span className="cursor-pointer" onClick={() => getUsers(page - 1, rowsPerPage, defaultRole)}>&lt;</span>&nbsp;
+          <span>{page} /</span>&nbsp;
+          <span>{totalPages}</span>&nbsp;
+          <span className="cursor-pointer" onClick={() => getUsers(page + 1, rowsPerPage, defaultRole)}>&gt;</span>
+        </div>}
 
         {/* show message */}
         {showMessage && <h5 className="text-xl font-bold text-center text-gray-600">{showMessage}</h5>}

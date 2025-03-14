@@ -1,16 +1,22 @@
 import "./DashboardHome.css";
 import { useEffect } from "react";
-import { Navigate, Link, Outlet } from "react-router-dom";
+import { Navigate, Link, Outlet, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faUser, faGift, faHouse, faPowerOff, faFileLines, faCartPlus, faBagShopping, faList, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardHome = () => {
   let showSidebar = true;
   let x = window.matchMedia("(max-width: 768px)");
+  const navigate = useNavigate();
 
   useEffect(() => {
     changeSidebar();
-  }, [])
+  }, []);
+
+  const signOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   const changeSidebar = () => {
     const sidebar = document.getElementById("DashboardHome-sidebar");
@@ -86,7 +92,7 @@ const DashboardHome = () => {
               <Link to="/" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faHouse}/> Homepage</Link>
             </div>
             <div>
-              <Link to="" className="block hover:bg-gray-700 px-4 py-2"><FontAwesomeIcon icon={faPowerOff}/> Sign Out</Link>
+              <Link to="" className="block hover:bg-gray-700 px-4 py-2" onClick={signOut}><FontAwesomeIcon icon={faPowerOff}/> Sign Out</Link>
             </div>
           </div>
           <div className="DashboardHome-component-div-width-1 float-left h-full overflow-auto p-4" id="DashboardHome-component-div">
