@@ -98,7 +98,7 @@ const Shop = () => {
   return (
     <div>
       {/* shop heading and category selection */}
-      <div className="px-4 py-2">
+      <div className="px-8 py-2">
         <div className="flex flex-col sm:flex-row justify-between border-b-2 border-black pb-1">
           <h3 className="text-3xl font-bold mt-1">Shop</h3>
           <form className="mt-4 sm:mt-1">
@@ -113,7 +113,7 @@ const Shop = () => {
       </div>
 
       {/* search form and itemsPerPage form */}
-      <div className="px-4 py-2">
+      <div className="px-8 py-2">
         <div className="flex flex-col sm:flex-row justify-between">
           <form onSubmit={handleSearch} className="mt-1">
             <input className="border border-black me-2 px-2 py-1" type="text" value={search} onChange={(e) => setSearch(e.target.value)}/>

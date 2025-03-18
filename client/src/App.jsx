@@ -7,6 +7,7 @@ import Categories from "./pages/categories/Categories";
 import Shop from "./pages/shop/Shop";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Cart from "./pages/cart/Cart";
+import Reviews from "./pages/reviews/Reviews";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
@@ -38,6 +39,9 @@ function App() {
           </Layout>}/>
           <Route path="/cart" element={<Layout>
             <Cart/>
+          </Layout>}/>
+          <Route path="/reviews" element={<Layout>
+            <Reviews/>
           </Layout>}/>
           <Route path="/sign-in" element={<Layout>
             <SignIn/>

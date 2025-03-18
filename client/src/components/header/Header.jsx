@@ -58,7 +58,7 @@ const Header = () => {
           <Link to="/shop" className="Header-nav-link">Shop</Link>
         </div>
         <div className="Header-nav-link-div hover:bg-blue-300">
-          <Link to="" className="Header-nav-link">Reviews</Link>
+          <Link to="/reviews" className="Header-nav-link">Reviews</Link>
         </div>
         <div className="Header-nav-link-div Header-dropdown-div hover:bg-blue-300 relative">
           <Link to="" className="Header-nav-link"><FontAwesomeIcon icon={faCartShopping}/></Link>
@@ -103,7 +103,7 @@ const Header = () => {
           <Link to="/shop" className="Header-sidebar-nav-link">Shop</Link>
         </div>
         <div>
-          <Link to="" className="Header-sidebar-nav-link">Reviews</Link>
+          <Link to="/reviews" className="Header-sidebar-nav-link">Reviews</Link>
         </div>
         <div>
           <Link to="" className="Header-sidebar-nav-link" onClick={showMiniCartSmall}>

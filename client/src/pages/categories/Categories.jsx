@@ -17,9 +17,9 @@ const Categories = () => {
 
   return (
     <div>
-      <h3 className="px-4 py-4 text-3xl font-bold text-center">Categories</h3>
-      <div className="Home-categories grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center">
-        {categories.map((category) => <div key={category._id}><Link className="Home-categories-link bg-blue-200" to={{ pathname: "/shop", search: `?category=${category.category}` }}>{category.category}</Link></div>)}
+      <h3 className="text-3xl font-bold border-b-2 border-black my-4 mx-8 pb-2">Categories</h3>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center">
+        {categories.map((category) => <div key={category._id}><Link className="block bg-blue-200 mx-8 my-4 p-4" to={{ pathname: "/shop", search: `?category=${category.category}` }}>{category.category}</Link></div>)}
       </div>
     </div>
   );
