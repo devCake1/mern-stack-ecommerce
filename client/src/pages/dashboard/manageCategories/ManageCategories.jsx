@@ -140,7 +140,10 @@ const ManageCategories = () => {
             <form className="block p-2" onSubmit={deleteCategory}>
               <h6 className="text-lg font-bold">Category ID:</h6>
               <div>
-                <input className="border border-black p-1" type="text" value={categoryIdToDelete} onChange={(e) => setCategoryIdToDelete(e.target.value)} required/> <button className="border border-orange-300 bg-orange-300 cursor-pointer p-1" onClick={pasteId}>Paste ID</button>
+                <div className="flex">
+                  <input className="flex-initial w-50 border border-black p-1" type="text" value={categoryIdToDelete} onChange={(e) => setCategoryIdToDelete(e.target.value)} required/>&nbsp;
+                  <button className="flex-none border-2 border-orange-300 bg-orange-300 cursor-pointer p-1" onClick={pasteId}>Paste ID</button>
+                </div>
               </div>
               <div className="text-center mt-2">
                 <button className="px-4 py-2 bg-red-300 cursor-pointer" type="submit">Delete</button>&nbsp;

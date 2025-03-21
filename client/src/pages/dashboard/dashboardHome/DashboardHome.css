@@ -3,34 +3,6 @@
   height: 100vh;
 }
 
-.DashboardHome-header {
-  height: 40px;
-}
-
-.DashboardHome-header-left {
-  width: 250px;
-}
-
-.DashboardHome-header-left > h5 {
-  line-height: 40px;
-  vertical-align: middle;
-}
-
-.DashboardHome-header-right {
-  width: calc(100% - 250px);
-}
-
-.DashboardHome-header-right > button {
-  width: 30px;
-  height: 30px;
-  margin: 5px 0;
-}
-
-.DashboardHome-main {
-  width: 100%;
-  height: calc(100vh - 40px);
-}
-
 .DashboardHome-sidebar-width-1 {
   width: 250px;
 }
@@ -39,10 +11,53 @@
   width: 0;
 }
 
-.DashboardHome-component-div-width-1 {
+.DashboardHome-Logo > h5 {
+  height: 40px;
+  padding-left: 20px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.DashboardHome-sidebar-item {
+  height: 28px;
+  line-height: 28px;
+  vertical-align: middle;
+}
+
+.DashboardHome-sidebar-icon {
+  width: 50px;
+}
+
+.DashboardHome-sidebar-link {
+  width: calc(100% - 50px);
+}
+
+.DashboardHome-main-width-1 {
   width: calc(100% - 250px);
 }
 
-.DashboardHome-component-div-width-2 {
+.DashboardHome-main-width-2 {
   width: 100%;
+}
+
+.DashboardHome-header {
+  height: 40px;
+}
+
+.DashboardHome-header-left {
+  width: 40px;
+  height: 40px;
+}
+
+.DashboardHome-header-right {
+  width: calc(100% - 40px);
+}
+
+.DashboardHome-header-right > h5 {
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.DashboardHome-component-div {
+  height: calc(100% - 40px);
 }

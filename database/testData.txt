@@ -26,67 +26,67 @@ db.users.insertMany([
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Three"
-    "email": "user.three@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Three",
+    "email": "user.three@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Four"
-    "email": "user.four@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Four",
+    "email": "user.four@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Five"
-    "email": "user.five@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Five",
+    "email": "user.five@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Six"
-    "email": "user.six@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Six",
+    "email": "user.six@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Seven"
-    "email": "user.seven@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Seven",
+    "email": "user.seven@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Eight"
-    "email": "user.eight@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Eight",
+    "email": "user.eight@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Nine"
-    "email": "user.nine@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Nine",
+    "email": "user.nine@example.com",
+    "password": "123456",
     "isAdmin": false
   },
   {
-    "imgPath": ""
-    "firstName": "User"
-    "lastName": "Ten"
-    "email": "user.ten@example.com"
-    "password": "123456"
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Ten",
+    "email": "user.ten@example.com",
+    "password": "123456",
     "isAdmin": false
   }
 ]);

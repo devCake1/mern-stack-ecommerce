@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const SingleItem = (props) => {
   const [productImage, setProductImage] = useState(null);
@@ -95,7 +96,6 @@ const SingleItem = (props) => {
     })
     .then((res) => {
       setDeleteMessage(res.data.message);
-      props.getProducts(props.page, props.itemsPerPage, props.defaultCategory);
     })
     .catch((err) => {
       if (err.response.data.message === "jwt expired") {
@@ -166,19 +166,40 @@ const SingleItem = (props) => {
 
       {/* confirm delete product modal div */}
       {confirmDeleteModal && <div className="SingleItem-confirm-delete-modal-div">
-        <div className="SingleItem-confirm-delete-modal bg-white p-4">
-          {!deleteMessage && <h6 className="text-lg font-bold text-center mb-2">Do you want to delete this ptoduct?</h6>}
-          {deleteMessage && <h6 className="text-lg font-bold text-center mb-2">{deleteMessage}</h6>}
+        <div className="SingleItem-confirm-delete-modal bg-white">
+          {!deleteMessage && <div className="mb-4">
+            <div className="flex justify-between bg-red-600 text-white py-2">
+              <h6 className="text-lg font-bold ps-2">Confirm Delete</h6>
+              <button className="px-2">
+                <FontAwesomeIcon icon={faXmark} className="cursor-pointer" onClick={() => setConfirmDeleteModal(false)}/>
+              </button>
+            </div>
+          </div>}
+          {deleteMessage && <div className="mb-4">
+            <div className="flex justify-between bg-blue-200 py-2">
+              <h6 className="text-lg font-bold ps-2">Delete Message</h6>
+              <button className="px-2">
+                <FontAwesomeIcon icon={faXmark} className="cursor-pointer" onClick={() => {
+                  setConfirmDeleteModal(false);
+                  setDeleteMessage("");
+                  props.getProducts(props.page, props.itemsPerPage, props.defaultCategory);
+                }}/>
+              </button>
+            </div>
+          </div>}
+          {!deleteMessage && <p className="text-center mb-4">Do you want to delete this ptoduct "{props.product.productName}"?</p>}
+          {deleteMessage && <p className="text-center mb-4">{deleteMessage}</p>}
           {!deleteMessage && <div className="text-center">
-            <button className="px-4 py-2 bg-red-300 cursor-pointer" onClick={handleDelete}>Delete</button>&nbsp;
+            <button className="px-4 py-2 bg-red-600 text-white cursor-pointer" onClick={handleDelete}>Delete</button>&nbsp;
             <button className="px-4 py-2 bg-gray-300 cursor-pointer" onClick={() => setConfirmDeleteModal(false)}>Cancel</button>
           </div>}
           {deleteMessage && <div className="text-center">
             <button className="px-4 py-2 bg-blue-300 cursor-pointer" onClick={() => {
               setConfirmDeleteModal(false);
               setDeleteMessage("");
+              props.getProducts(props.page, props.itemsPerPage, props.defaultCategory);
             }}>Ok</button>
-          </div>}
+          </div>}<br/>
         </div>
       </div>}
 

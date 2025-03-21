@@ -67,7 +67,10 @@ const Header = () => {
           </div>
         </div>
         <div className="Header-nav-link-div Header-dropdown-div hover:bg-blue-300 relative">
-          <Link to="" className="Header-nav-link"><FontAwesomeIcon icon={faCircleUser}/></Link>
+          <Link to="" className="Header-nav-link">
+            {!localStorage.getItem("imgPath") && <FontAwesomeIcon icon={faCircleUser}/>}
+            {localStorage.getItem("imgPath") && <img src={import.meta.env.VITE_SERVER_BASE_URL + "/" + localStorage.getItem("imgPath")} alt="" style={{ width: "16px", height: "16px", marginTop: "15px" }}/>}
+          </Link>
           <div className="Header-dropdown-content absolute top-full right-0 bg-blue-200">
             {!localStorage.getItem("userId") && <div className="Header-dropdown-link-div">
               <Link to="/sign-in" className="Header-dropdown-link hover:bg-blue-300">Sign In</Link>
@@ -112,7 +115,8 @@ const Header = () => {
         </div>
         <div className="Header-sidebar-dropdown-div">
           <Link to="" className="Header-sidebar-nav-link">
-            <FontAwesomeIcon icon={faCircleUser}/>
+            {!localStorage.getItem("imgPath") && <FontAwesomeIcon icon={faCircleUser}/>}
+            {localStorage.getItem("imgPath") && <img src={import.meta.env.VITE_SERVER_BASE_URL + "/" + localStorage.getItem("imgPath")} alt="" style={{ width: "16px", height: "16px" }}/>}
           </Link>
           <div className="Header-sidebar-dropdown-content">
             {!localStorage.getItem("userId") && <div className="Header-sidebar-dropdown-link-div">

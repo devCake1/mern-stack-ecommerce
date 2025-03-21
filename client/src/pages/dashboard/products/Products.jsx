@@ -183,13 +183,13 @@ const Products = () => {
           <div className="Products-new-product-modal bg-white overflow-y-auto">
             <div className="bg-blue-200">
               <div className="flex justify-between">
-                <h5 className="text-xl p-2 font-bold">Add New Product</h5>
+                <h5 className="flex-1 text-xl text-center py-2 font-bold">Add New Product</h5>
                 <button className="bg-red-600 text-white px-4 cursor-pointer" onClick={() => setShowNewProductModal(false)}>
                   <FontAwesomeIcon icon={faXmark}/>
                 </button>
               </div>
             </div>
-            <form className="block w-full p-2" encType="multipart/form-data" onSubmit={addNewProduct}>
+            <form className="block w-full px-8 py-2" encType="multipart/form-data" onSubmit={addNewProduct}>
               <div className="Products-new-product-image-preview bg-gray-300 mx-auto">
                 {productImagePreview && <img src={productImagePreview} alt=""/>}
               </div>
@@ -212,8 +212,8 @@ const Products = () => {
               <h6 className="text-lg font-bold mt-2">Price:</h6>
               <input className="block w-full border border-black p-1" type="number" min="0" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)}/>
               <h6 className="text-lg font-bold mt-2">In-stock:</h6>
-              <input className="block w-full border border-black p-1" type="number" min="0" step="1" value={inStock} onChange={(e) => setInStock(e.target.value)}/>
-              {newProductMessage && <div className="bg-green-200 p-2">
+              <input className="block w-full border border-black p-1 mb-2" type="number" min="0" step="1" value={inStock} onChange={(e) => setInStock(e.target.value)}/>
+              {newProductMessage && <div className="bg-green-200 px-8 py-2">
                 <div className="flex justify-between">
                   <p className="pe-2">{newProductMessage}</p>
                   <button className="cursor-pointer" onClick={() => setNewProductMessage("")}>
@@ -221,7 +221,7 @@ const Products = () => {
                   </button>
                 </div> 
               </div>}
-              <div className="text-center">
+              <div className="text-center my-2">
                 <button className="px-4 py-2 bg-blue-300 cursor-pointer mt-2" type="submit">Submit</button>
               </div>
             </form>

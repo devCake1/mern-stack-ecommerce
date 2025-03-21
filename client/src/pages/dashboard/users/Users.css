@@ -1,11 +1,28 @@
 .Users-profile-picture-td {
-  min-width: 150px;
-  min-height: 150px;
+  min-width: 50px;
+  min-height: 50px;
 }
 
 .Users-profile-picture-td > img {
   display: block;
   margin: 0 auto;
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
+}
+
+.Users-confirm-delete-modal-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Users-confirm-delete-modal {
+  position: relative;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
 }

@@ -163,4 +163,27 @@ const getSingleUser = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser };
+const deleteUserAccount = async (req, res, next) => {
+  try {
+    const email = req.params.email;
+    const user = await User.findOne({ email: email }, { _id: 0, imgPath: 1 });
+    if (user.imgPath) {
+      fs.unlink(user.imgPath, (err) => {
+        if (err) {
+          next(err);
+        } else {
+          console.log(`${user.imgPath} was deleted`);
+        }
+      })
+    }
+    await User.deleteOne({ email: email });
+    res.status(200).send({
+      message: "The user account has been deleted successfully",
+      isSuccessful: true
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount };
