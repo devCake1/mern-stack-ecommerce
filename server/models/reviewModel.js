@@ -26,7 +26,7 @@ const reviewSchema = new Schema({
     type: String,
     required: [true, "Comment is required"]
   }
-});
+}, { timestamps: true });
 
 const Review = new model("Review", reviewSchema);
 

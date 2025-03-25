@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import SingleReview from "./SingleReview";
 
 const Reviews = () => {
+  const [ratingStars, setRatingStars] = useState(1);
+  const [comment, setComment] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [showMessage, setShowMessage] = useState("");
+  const [showError, setShowError] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
@@ -32,6 +37,32 @@ const Reviews = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!localStorage.getItem("userId")) {
+      setShowError("Please sign-in");
+      return;
+    }
+    setShowError("");
+    const newReview = {
+      firstName: localStorage.getItem("firstName"),
+      lastName: localStorage.getItem("lastName"),
+      email: localStorage.getItem("email"),
+      ratingStars,
+      comment
+    };
+    axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/api/reviews`, newReview, {
+      headers: {
+        signintoken: localStorage.getItem("signInToken")
+      }
+    })
+    .then((res) => {
+      setShowMessage(res.data.message);
+      getReviews(page);
+      setRatingStars(1);
+      setComment("");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
 
   return (
@@ -41,7 +72,7 @@ const Reviews = () => {
         <h5 className="text-xl font-bold mb-2">Share Your Experience with Us</h5>
         <div className="mb-2">
           <span className="text-lg font-bold">Overall Rating (<FontAwesomeIcon icon={faStar} className="text-yellow-600"/>):&nbsp;</span>
-          <select className="border border-black">
+          <select className="border border-black" value={ratingStars} onChange={(e) => setRatingStars(e.target.value)}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -51,8 +82,17 @@ const Reviews = () => {
         </div>
         <div className="mb-4">
           <h6 className="text-lg font-bold">Your Comment:</h6>
-          <textarea className="block w-full border border-black p-2" rows={4} required></textarea>
+          <textarea className="block w-full border border-black p-2" rows={4} value={comment} onChange={(e) => setComment(e.target.value)} required></textarea>
         </div>
+        {showMessage && <div className="bg-green-200 p-2">
+          <div className="flex justify-between">
+            <p className="pe-2">{showMessage}</p>
+            <button>
+              <FontAwesomeIcon icon={faCircleXmark} className="cursor-pointer" onClick={() => setShowMessage("")}/>
+            </button>  
+          </div>  
+        </div>}
+        {showError && <p className="text-red-600">{showError}</p>}
         <div className="mt-2">
           <button type="submit" className="px-4 py-2 bg-blue-300 cursor-pointer">Submit</button>
         </div>

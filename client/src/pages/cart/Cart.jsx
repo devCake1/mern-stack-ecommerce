@@ -75,6 +75,7 @@ const Cart = () => {
               return (
                 <tr key={item._id} className="border-b border-black">
                   <td className="Cart-item-image-td px-4 py-2">
+                    {item.imgPath && <img src={import.meta.env.VITE_SERVER_BASE_URL + "/" + item.imgPath} alt=""/>}
                     {!item.imgPath && <img src={defaultImage} alt=""/>}
                   </td>
                   <td className="px-4 py-2 text-xl font-bold text-left">{item.productName}</td>

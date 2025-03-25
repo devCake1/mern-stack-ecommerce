@@ -138,7 +138,7 @@ const Users = () => {
       {localStorage.getItem("isAdmin") === "true" && <div>
         {/* users heading and select role */}
         <div>
-          <div className="flex flex-col sm:flex-row justify-between border-b-2 border-black pb-1">
+          <div className="flex flex-col sm:flex-row justify-between items-center border-b-2 border-black pb-1">
             <h3 className="text-3xl font-bold mt-1">Users</h3>
             <form className="mt-4 sm:mt-1">
               <span>Select role: </span>

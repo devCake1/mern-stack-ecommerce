@@ -1,6 +1,10 @@
 const express = require("express");
-const { getReviews } = require("../controllers/reviewControllers");
+const { getReviews, addNewReview } = require("../controllers/reviewControllers");
+const isLoggedIn = require("../utility/isLoggedIn");
 const reviewRoutes = express.Router();
+
+// POST: /api/reviews
+reviewRoutes.post("/", isLoggedIn, addNewReview);
 
 // GET: /api/reviews
 reviewRoutes.get("/", getReviews);

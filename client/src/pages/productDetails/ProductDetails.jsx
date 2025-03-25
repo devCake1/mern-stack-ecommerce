@@ -1,11 +1,14 @@
 import defaultImage from "../../assets/image-2935360_1280.png"
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux"
 import axios from "axios";
+import { addToCart } from "../../features/cartSlice";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const productId = new URLSearchParams(location.search).get("productId");
@@ -21,14 +24,15 @@ const ProductDetails = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 mx-4 my-2">
       <div className="p-2">
-        {!product.imgPath && <img src={defaultImage} alt="" />}
+        {product.imgPath && <img src={import.meta.env.VITE_SERVER_BASE_URL + "/" + product.imgPath} alt=""/>}
+        {!product.imgPath && <img src={defaultImage} alt=""/>}
       </div>
       <div className="p-2">
         <h3 className="font-bold text-3xl mb-2">{product.productName}</h3>
         <p className="mb-2">{product.description}</p>
         <h5 className="font-bold text-xl">Price: ${product.price}</h5>
         <h5 className="font-bold text-xl mb-2">In-stock: {product.inStock}</h5>
-        <button className="w-full cursor-pointer bg-blue-300 py-1">Add to Cart</button>
+        <button className="w-full cursor-pointer bg-blue-300 py-1" onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
       </div>
     </div>
   );

@@ -185,7 +185,9 @@ db.reviews.insertMany([
     "lastName": "Two",
     "email": "user.two@example.com",
     "rating": 5,
-    "comment": "Lorem ipsum dolor sit amet"
+    "comment": "Lorem ipsum dolor sit amet",
+    "createdAt": "2025-03-23T14:08:26.808+00:00",
+    "updatedAt": "2025-03-23T14:08:26.808+00:00"
   },
   {
     "imgPath": "",
@@ -193,7 +195,9 @@ db.reviews.insertMany([
     "lastName": "Three",
     "email": "user.three@example.com",
     "rating": 5,
-    "comment": "Lorem ipsum dolor sit amet"
+    "comment": "Lorem ipsum dolor sit amet",
+    "createdAt": "2025-03-23T14:08:40.808+00:00",
+    "updatedAt": "2025-03-23T14:08:40.808+00:00"
   },
   {
     "imgPath": "",
@@ -201,7 +205,9 @@ db.reviews.insertMany([
     "lastName": "Four",
     "email": "user.four@example.com",
     "rating": 5,
-    "comment": "Lorem ipsum dolor sit amet"
+    "comment": "Lorem ipsum dolor sit amet",
+    "createdAt": "2025-03-23T14:08:50.808+00:00",
+    "updatedAt": "2025-03-23T14:08:50.808+00:00"
   },
   {
     "imgPath": "",
@@ -209,7 +215,9 @@ db.reviews.insertMany([
     "lastName": "Five",
     "email": "user.five@example.com",
     "rating": 5,
-    "comment": "Lorem ipsum dolor sit amet"
+    "comment": "Lorem ipsum dolor sit amet",
+    "createdAt": "2025-03-23T14:09:10.808+00:00",
+    "updatedAt": "2025-03-23T14:09:10.808+00:00"
   },
   {
     "imgPath": "",
@@ -217,7 +225,9 @@ db.reviews.insertMany([
     "lastName": "Six",
     "email": "user.six@example.com",
     "rating": 5,
-    "comment": "Lorem ipsum dolor sit amet"
+    "comment": "Lorem ipsum dolor sit amet",
+    "createdAt": "2025-03-23T14:09:25.808+00:00",
+    "updatedAt": "2025-03-23T14:09:25.808+00:00"
   },
   {
     "imgPath": "",
@@ -225,6 +235,8 @@ db.reviews.insertMany([
     "lastName": "Seven",
     "email": "user.seven@example.com",
     "rating": 5,
-    "comment": "Lorem ipsum dolor sit amet"
+    "comment": "Lorem ipsum dolor sit amet",
+    "createdAt": "2025-03-23T14:09:56.808+00:00",
+    "updatedAt": "2025-03-23T14:09:56.808+00:00"
   }
 ]);

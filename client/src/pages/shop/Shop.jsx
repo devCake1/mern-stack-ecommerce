@@ -99,7 +99,7 @@ const Shop = () => {
     <div>
       {/* shop heading and category selection */}
       <div className="px-8 py-2">
-        <div className="flex flex-col sm:flex-row justify-between border-b-2 border-black pb-1">
+        <div className="flex flex-col sm:flex-row justify-between items-center border-b-2 border-black pb-1">
           <h3 className="text-3xl font-bold mt-1">Shop</h3>
           <form className="mt-4 sm:mt-1">
             <span>Category: </span>

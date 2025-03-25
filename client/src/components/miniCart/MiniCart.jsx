@@ -21,6 +21,7 @@ const MiniCart = () => {
           return (
             <div key={item._id} className="grid grid-cols-3 gap-2 mb-2">
               <div className="MiniCart-item-image">
+                {item.imgPath && <img src={import.meta.env.VITE_SERVER_BASE_URL + "/" + item.imgPath} alt=""/>}
                 {!item.imgPath && <img src={defaultImage} alt="" className="w-full h-full"/>}
               </div>
               <div className="col-span-2">
