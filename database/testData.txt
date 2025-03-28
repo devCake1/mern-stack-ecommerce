@@ -88,6 +88,86 @@ db.users.insertMany([
     "email": "user.ten@example.com",
     "password": "123456",
     "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Eleven",
+    "email": "user.eleven@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Twelve",
+    "email": "user.twelve@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Thirteen",
+    "email": "user.thirteen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Fourteen",
+    "email": "user.fourteen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Fifteen",
+    "email": "user.fifteen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Sixteen",
+    "email": "user.sixteen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Seventeen",
+    "email": "user.seventeen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Eighteen",
+    "email": "user.eighteen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Nineteen",
+    "email": "user.nineteen@example.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "imgPath": "",
+    "firstName": "User",
+    "lastName": "Twenty",
+    "email": "user.twenty@example.com",
+    "password": "123456",
+    "isAdmin": false
   }
 ]);
 

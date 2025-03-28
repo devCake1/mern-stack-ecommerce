@@ -23,7 +23,7 @@ const addNewReview = async (req, res, next) => {
 const getReviews = async (req, res, next) => {
   try {
     const page = req.query.page;
-    const limit = 3;
+    const limit = req.query.limit;
     const reviews = await Review.find().sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit);
     const countReviews = await Review.find().countDocuments();
     for (let i = 0; i < reviews.length; i++) {
@@ -41,4 +41,17 @@ const getReviews = async (req, res, next) => {
   }
 };
 
-module.exports = { addNewReview, getReviews };
+const deleteReview = async (req, res, next) => {
+  try {
+    const reviewId = req.params.reviewId;
+    await Review.deleteOne({ _id: reviewId });
+    res.status(200).send({
+      message: "The review has been deleted successfully",
+      isSuccessful: true
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { addNewReview, getReviews, deleteReview };

@@ -16,6 +16,7 @@ import Orders from "./pages/dashboard/orders/Orders";
 import Products from "./pages/dashboard/products/Products";
 import ManageCategories from "./pages/dashboard/manageCategories/ManageCategories";
 import Users from "./pages/dashboard/users/Users";
+import ManageReviews from "./pages/dashboard/manageReviews/ManageReviews";
 import MyProfile from "./pages/dashboard/myProfile/MyProfile";
 import MyOrders from "./pages/dashboard/myOrders/MyOrders";
 
@@ -55,6 +56,7 @@ function App() {
             <Route path="/dashboard/products" element={<Products/>}/>
             <Route path="/dashboard/categories" element={<ManageCategories/>}/>
             <Route path="/dashboard/users" element={<Users/>}/>
+            <Route path="/dashboard/reviews" element={<ManageReviews/>}/>
             <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
             <Route path="/dashboard/my-orders" element={<MyOrders/>}/>
           </Route>
