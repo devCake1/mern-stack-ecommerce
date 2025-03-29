@@ -10,7 +10,7 @@
   height: 50px;
 }
 
-.Users-confirm-delete-modal-div {
+.Users-modal-div {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.Users-confirm-delete-modal {
+.Users-modal {
   position: relative;
   top: 60px;
   left: 50%;

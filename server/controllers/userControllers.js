@@ -186,4 +186,22 @@ const deleteUserAccount = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount };
+const changeRole = async (req, res, next) => {
+  try {
+    const userId = req.body.userId;
+    const role = req.body.role;
+    if (role === "Admin") {
+      await User.findOneAndUpdate({ _id: userId }, { $set: { isAdmin: true } });
+    } else {
+      await User.findOneAndUpdate({ _id: userId }, { $set: { isAdmin: false } });
+    }
+    res.status(200).send({
+      message: "User role has been changed successfully",
+      isSuccessful: true
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount, changeRole };

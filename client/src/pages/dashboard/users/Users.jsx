@@ -13,6 +13,7 @@ const Users = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [email, setEmail] = useState("");
+  const [userRoleChangeMessage, setUserRoleChangeMessage] = useState("");
   const [showMessage, setShowMessage] = useState("");
   // first name of the user whose account has been selected to delete
   const [delFirstName, setDelFirstName] = useState("");
@@ -99,6 +100,23 @@ const Users = () => {
         console.log(err);
       }
     });
+  };
+
+  const changeRole = (userId, role) => {
+    const userInfo =  { userId, role };
+    axios.put(`${import.meta.env.VITE_SERVER_BASE_URL}/api/users/change-role`, userInfo, {
+      headers: {
+        signintoken: localStorage.getItem("signInToken"),
+        userId: localStorage.getItem("userId")
+      }
+    })
+    .then((res) => {
+      setUserRoleChangeMessage(res.data.message);
+      getUsers(page, rowsPerPage, defaultRole);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
 
   const showConfirmDeleteModal = (firstName, lastName, email) => {
@@ -194,8 +212,8 @@ const Users = () => {
                   {user.isAdmin && <span>Admin</span>}
                 </td>
                 <td className="border border-black p-1 text-center">
-                  {!user.isAdmin && <button className="px-4 py-2 cursor-pointer bg-blue-300">Change Role to Admin</button>}
-                  {user.isAdmin && <button className="px-4 py-2 cursor-pointer bg-blue-300">Change Role to User</button>}
+                  {!user.isAdmin && <button className="px-4 py-2 cursor-pointer bg-blue-300" onClick={() => changeRole(user._id, "Admin")}>Change Role to Admin</button>}
+                  {user.isAdmin && <button className="px-4 py-2 cursor-pointer bg-blue-300" onClick={() => changeRole(user._id, "User")}>Change Role to User</button>}
                 </td>
                 <td className="border border-black p-1 text-center">
                   <button className="cursor-pointer text-red-600" onClick={() => showConfirmDeleteModal(user.firstName, user.lastName, user.email)}>
@@ -218,13 +236,31 @@ const Users = () => {
         {/* show message */}
         {showMessage && <h5 className="text-xl font-bold text-center text-gray-600">{showMessage}</h5>}
 
+        {/* user role change message */}
+        {userRoleChangeMessage && <div className="Users-modal-div">
+          <div className="Users-modal bg-white">
+            <div className="mb-2">
+              <div className="flex justify-between bg-blue-200">
+                <h6 className="text-lg font-bold p-2">Message</h6>
+                <button className="p-2 bg-red-600 text-white cursor-pointer" onClick={() => setUserRoleChangeMessage("")}>
+                  <FontAwesomeIcon icon={faXmark}/>
+                </button>
+              </div>
+            </div>
+            <p className="mb-2 px-4 text-center">{userRoleChangeMessage}</p>
+            <div className="text-center pb-4">
+              <button className="px-4 py-2 cursor-pointer bg-blue-300" onClick={() => setUserRoleChangeMessage("")}>Ok</button>
+            </div>
+          </div>  
+        </div>}
+
         {/* confirm delete modal div */}
-        {confirmDeleteModal && <div className="Users-confirm-delete-modal-div">
-          <div className="Users-confirm-delete-modal bg-white">
+        {confirmDeleteModal && <div className="Users-modal-div">
+          <div className="Users-modal bg-white">
             {!deleteMessage && <div className="mb-2">
               <div className="flex justify-between bg-red-600 text-white">
-                <h6 className="text-lg font-bold ps-2">Confirm Delete</h6>
-                <button className="px-2">
+                <h6 className="text-lg font-bold p-2">Confirm Delete</h6>
+                <button className="p-2">
                   <FontAwesomeIcon icon={faXmark} className="cursor-pointer" onClick={() => setConfirmDeleteModal(false)}/>
                 </button>
               </div>
