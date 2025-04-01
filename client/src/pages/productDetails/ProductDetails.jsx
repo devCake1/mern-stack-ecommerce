@@ -7,6 +7,7 @@ import { addToCart } from "../../features/cartSlice";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
+  const [discountPrice, setDiscountPrice] = useState(0);
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -15,11 +16,19 @@ const ProductDetails = () => {
     axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products/${productId}`)
     .then((res) => {
       setProduct(res.data.product);
+      if (res.data.product.discount > 0)  {
+        calculateDiscountPrice(res.data.product.price, res.data.product.discount);
+      }
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
   }, []);
+
+  const calculateDiscountPrice = (price, discount) => {
+    const discountAmount = (discount * price) / 100;
+    setDiscountPrice(price - discountAmount);
+  };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 mx-4 my-2">
@@ -30,7 +39,7 @@ const ProductDetails = () => {
       <div className="p-2">
         <h3 className="font-bold text-3xl mb-2">{product.productName}</h3>
         <p className="mb-2">{product.description}</p>
-        <h5 className="font-bold text-xl">Price: ${product.price}</h5>
+        <h5 className="font-bold text-xl">Price: {(discountPrice > 0)? <span><strike>${product.price}</strike> <span>${discountPrice}</span></span> : <span>${product.price}</span>}</h5>
         <h5 className="font-bold text-xl mb-2">In-stock: {product.inStock}</h5>
         <button className="w-full cursor-pointer bg-blue-300 py-1" onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
       </div>

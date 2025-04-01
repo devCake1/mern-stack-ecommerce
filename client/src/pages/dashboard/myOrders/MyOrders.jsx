@@ -196,9 +196,11 @@ const ViewDetails = (props) => {
                     {!item.imgPath && <img src={defautlImage} alt=""/>}
                   </td>
                   <td className="p-2">{item.productName}</td>
-                  <td className="p-2">${item.price}</td>
-                  <td className="p-2">{item.quantity}</td>
-                  <td className="p-2">${item.price * item.quantity}</td>
+                  {item.discount === 0 && <td className="p-2 text-center">${item.price}</td>}
+                  {item.discount > 0 && <td className="p-2 text-center">${item.price - ((item.discount * item.price) / 100)}</td>}
+                  <td className="p-2 text-center">{item.quantity}</td>
+                  {item.discount === 0 && <td className="p-2 text-center">${item.price * item.quantity}</td>}
+                  {item.discount > 0 && <td className="p-2 text-center">${(item.price - ((item.discount * item.price) / 100)) * item.quantity}</td>}
                 </tr>
               );
             })}

@@ -26,7 +26,8 @@ const MiniCart = () => {
               </div>
               <div className="col-span-2">
                 <h5 className="text-xl font-bold mb-1">{item.productName}</h5>
-                <p className="font-bold mb-3">${item.price * item.quantity}</p>
+                {item.discount === 0 && <p className="font-bold mb-3">${item.price * item.quantity}</p>}
+                {item.discount > 0 && <p className="font-bold mb-3">${(item.price - ((item.discount * item.price) / 100)) * item.quantity}</p>}
                 <div>
                   <button className="border border-black px-2 cursor-pointer" onClick={() => dispatch(decrement(item._id))}>-</button>&nbsp;
                   <span>{item.quantity}</span>&nbsp;

@@ -79,7 +79,8 @@ const Cart = () => {
                     {!item.imgPath && <img src={defaultImage} alt=""/>}
                   </td>
                   <td className="px-4 py-2 text-xl font-bold text-left">{item.productName}</td>
-                  <td className="px-4 py-2">${item.price}</td>
+                  {item.discount === 0 && <td className="px-4 py-2">${item.price}</td>}
+                  {item.discount > 0 && <td className="px-4 py-2">${item.price - ((item.discount * item.price) / 100)}</td>}
                   <td className="px-4 py-2 text-center">
                     <div>
                       <button className="Cart-item-quantity-button border border-black cursor-pointer" onClick={() => dispatch(decrement(item._id))}>-</button>
@@ -91,7 +92,8 @@ const Cart = () => {
                       <button className="Cart-item-quantity-button border border-black cursor-pointer" onClick={() => dispatch(increment(item._id))}>+</button>
                     </div>
                   </td>
-                  <td className="px-4 py-2 text-center">${item.price * item.quantity}</td>
+                  {item.discount === 0 && <td className="px-4 py-2 text-center">${item.price * item.quantity}</td>}
+                  {item.discount > 0 && <td className="px-4 py-2 text-center">${(item.price - ((item.discount * item.price) / 100)) * item.quantity}</td>}
                 </tr>
               );
             })}
