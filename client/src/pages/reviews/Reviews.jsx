@@ -24,7 +24,7 @@ const Reviews = () => {
     } else if (totalPages && pageNumber > totalPages) {
       return;
     }
-    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/reviews?page=${pageNumber}&limit=3`)
+    axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/reviews?page=${pageNumber}&limit=5`)
     .then((res) => {
       setReviews(res.data.reviews);
       setPage(pageNumber);

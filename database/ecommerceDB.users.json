@@ -1,0 +1,227 @@
+[{
+  "_id": {
+    "$oid": "67c95ec60e3cdaf0a54dbb3f"
+  },
+  "imgPath": "uploads/1743775103848-289134532man-8677824_1280.png",
+  "firstName": "User",
+  "lastName": "One",
+  "email": "user.one@example.com",
+  "password": "123456",
+  "isAdmin": true
+},
+{
+  "_id": {
+    "$oid": "67c95ec60e3cdaf0a54dbb40"
+  },
+  "imgPath": "uploads/1743775149812-685219297avatar-659652_1280.png",
+  "firstName": "User",
+  "lastName": "Two",
+  "email": "user.two@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67ca9c84079ae1db6920b61f"
+  },
+  "imgPath": "uploads/1743774549372-513228228icon-5404125_1280.png",
+  "firstName": "User",
+  "lastName": "Three",
+  "email": "user.three@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2d2bf1766c86c76ca8cc0"
+  },
+  "imgPath": "uploads/1743774591984-961708216man-8106958_1280.png",
+  "firstName": "User",
+  "lastName": "Four",
+  "email": "user.four@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2d30b1766c86c76ca8cc3"
+  },
+  "imgPath": "uploads/1743804433822-685671007avatar-3637425_1280.png",
+  "firstName": "User",
+  "lastName": "Five",
+  "email": "user.five@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2d3431766c86c76ca8cc6"
+  },
+  "imgPath": "uploads/1743804507956-224032856female-296989_1280.png",
+  "firstName": "User",
+  "lastName": "Six",
+  "email": "user.six@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2d3801766c86c76ca8cc9"
+  },
+  "imgPath": "uploads/1743848838197-96292974icon-5359553_1280.png",
+  "firstName": "User",
+  "lastName": "Seven",
+  "email": "user.seven@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2d3b01766c86c76ca8ccc"
+  },
+  "imgPath": "uploads/1743848885865-699169975avatar-659651_1280.png",
+  "firstName": "User",
+  "lastName": "Eight",
+  "email": "user.eight@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2d3dd1766c86c76ca8ccf"
+  },
+  "imgPath": "uploads/1743848934317-668166280user-297566_1280.png",
+  "firstName": "User",
+  "lastName": "Nine",
+  "email": "user.nine@example.com",
+  "password": "123456",
+  "isAdmin": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67dd6a194f2829bf420a22ca"
+  },
+  "imgPath": "uploads/1743848971201-722980813icon-5404125_1280.png",
+  "firstName": "User",
+  "lastName": "Ten",
+  "email": "user.ten@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56b4862ab147338f5d3ed"
+  },
+  "imgPath": "uploads/1743857456114-15182146man-8106958_1280.png",
+  "firstName": "User",
+  "lastName": "Eleven",
+  "email": "user.eleven@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56b4862ab147338f5d3ee"
+  },
+  "imgPath": "uploads/1743857486921-49122418man-8677824_1280.png",
+  "firstName": "User",
+  "lastName": "Twelve",
+  "email": "user.twelve@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56b4862ab147338f5d3ef"
+  },
+  "imgPath": "uploads/1743857525150-875134460icon-5359553_1280.png",
+  "firstName": "User",
+  "lastName": "Thirteen",
+  "email": "user.thirteen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56b4862ab147338f5d3f0"
+  },
+  "imgPath": "uploads/1743857563593-645714317user-310807_1280.png",
+  "firstName": "User",
+  "lastName": "Fourteen",
+  "email": "user.fourteen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56b4862ab147338f5d3f1"
+  },
+  "imgPath": "uploads/1743857597701-281248452avatar-659651_1280.png",
+  "firstName": "User",
+  "lastName": "Fifteen",
+  "email": "user.fifteen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56c6062ab147338f5d3f3"
+  },
+  "imgPath": "uploads/1743857633883-387183131icon-5404125_1280.png",
+  "firstName": "User",
+  "lastName": "Sixteen",
+  "email": "user.sixteen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56c6062ab147338f5d3f4"
+  },
+  "imgPath": "uploads/1743857673180-157768136avatar-3637425_1280.png",
+  "firstName": "User",
+  "lastName": "Seventeen",
+  "email": "user.seventeen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56c6062ab147338f5d3f5"
+  },
+  "imgPath": "uploads/1743857703045-950674381man-8106958_1280.png",
+  "firstName": "User",
+  "lastName": "Eighteen",
+  "email": "user.eighteen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56c6062ab147338f5d3f6"
+  },
+  "imgPath": "uploads/1743857737303-783338318avatar-659652_1280.png",
+  "firstName": "User",
+  "lastName": "Nineteen",
+  "email": "user.nineteen@example.com",
+  "password": "123456",
+  "isAdmin": false
+},
+{
+  "_id": {
+    "$oid": "67e56c6062ab147338f5d3f7"
+  },
+  "imgPath": "uploads/1743857803772-985609505icon-5404125_1280.png",
+  "firstName": "User",
+  "lastName": "Twenty",
+  "email": "user.twenty@example.com",
+  "password": "123456",
+  "isAdmin": false
+}]

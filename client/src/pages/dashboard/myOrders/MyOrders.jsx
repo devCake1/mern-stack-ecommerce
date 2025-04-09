@@ -33,6 +33,7 @@ const MyOrders = () => {
       shipping = true;
     }
     setIsLoading(true);
+    window.scrollTo(0, 0);
     axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/api/orders/${userId}/${shipping}/${pageNumber}`, {
       headers: {
         signintoken: localStorage.getItem("signInToken")
@@ -83,7 +84,7 @@ const MyOrders = () => {
         </div>
 
         {/* my orders */}
-        <div className="MyOrders-orders mt-8 overflow-x-auto">
+        <div className="mt-8 overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr>

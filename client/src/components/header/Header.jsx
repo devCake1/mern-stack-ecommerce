@@ -27,7 +27,7 @@ const Header = () => {
 
   const signOut = () => {
     localStorage.clear();
-    navigate("/")
+    navigate("/");
   };
 
   return (

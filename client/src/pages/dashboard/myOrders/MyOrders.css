@@ -1,7 +1,3 @@
-.MyOrders-orders {
-  min-height: calc(100% - 121px);
-}
-
 .MyOrders-view-details-modal-div {
   position: fixed;
   top: 0;

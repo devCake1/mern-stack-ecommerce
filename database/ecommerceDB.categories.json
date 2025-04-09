@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "67c95ed70e3cdaf0a54dbb41"
+  },
+  "category": "Mobile Phone"
+},
+{
+  "_id": {
+    "$oid": "67c95ed70e3cdaf0a54dbb42"
+  },
+  "category": "Watch"
+},
+{
+  "_id": {
+    "$oid": "67c95ed70e3cdaf0a54dbb43"
+  },
+  "category": "Headphone"
+},
+{
+  "_id": {
+    "$oid": "67f2d32f4cd923a3b09b1ec4"
+  },
+  "category": "Keyboard"
+},
+{
+  "_id": {
+    "$oid": "67f2d32f4cd923a3b09b1ec5"
+  },
+  "category": "Mouse"
+},
+{
+  "_id": {
+    "$oid": "67f2d32f4cd923a3b09b1ec6"
+  },
+  "category": "Earphone"
+}]

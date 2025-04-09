@@ -1,0 +1,216 @@
+[{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb44"
+  },
+  "imgPath": "uploads/1743628552001-515467330pngimg.com - smartphone_PNG8534.png",
+  "productName": "Mobile Phone 1",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Mobile Phone",
+  "discount": 0,
+  "price": 119,
+  "inStock": 50
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb45"
+  },
+  "imgPath": "uploads/1740746810381-210803966pngimg.com - watches_PNG101455.png",
+  "productName": "Watch 1",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Watch",
+  "discount": 0,
+  "price": 42,
+  "inStock": 50
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb46"
+  },
+  "imgPath": "uploads/1743628403849-329448317pngimg.com - watches_PNG101453.png",
+  "productName": "Watch 2",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Watch",
+  "discount": 5,
+  "price": 55,
+  "inStock": 46
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb47"
+  },
+  "imgPath": "uploads/1743628421589-397806808pngimg.com - smartphone_PNG8533.png",
+  "productName": "Mobile Phone 2",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Mobile Phone",
+  "discount": 10,
+  "price": 135,
+  "inStock": 48
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb48"
+  },
+  "imgPath": "uploads/1743628448533-72616355pngimg.com - headphones_PNG101975.png",
+  "productName": "Headphone 1",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Headphone",
+  "discount": 0,
+  "price": 24,
+  "inStock": 48
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb49"
+  },
+  "imgPath": "uploads/1743628512794-821038692pngimg.com - watches_PNG101457.png",
+  "productName": "Watch 3",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Watch",
+  "discount": 0,
+  "price": 79,
+  "inStock": 49
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb4a"
+  },
+  "imgPath": "uploads/1743628467467-376337539pngimg.com - headphones_PNG101983.png",
+  "productName": "Headphone 2",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Headphone",
+  "discount": 0,
+  "price": 31,
+  "inStock": 50
+},
+{
+  "_id": {
+    "$oid": "67c95eeb0e3cdaf0a54dbb4b"
+  },
+  "imgPath": "uploads/1743628480653-47133386pngimg.com - watches_PNG101456.png",
+  "productName": "Watch 4",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Watch",
+  "discount": 0,
+  "price": 67,
+  "inStock": 48
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b63b"
+  },
+  "imgPath": "uploads/1743976568987-867226480pngimg.com - keyboard_PNG101845.png",
+  "productName": "Keyboard 1",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Keyboard",
+  "discount": 0,
+  "price": 9,
+  "inStock": 50
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b63c"
+  },
+  "imgPath": "uploads/1743976609948-465071695pngimg.com - smartphone_PNG8532.png",
+  "productName": "Mobile Phone 3",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Mobile Phone",
+  "discount": 0,
+  "price": 149,
+  "inStock": 49
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b63d"
+  },
+  "imgPath": "uploads/1743976620573-514675280pngimg.com - smartphone_PNG8536.png",
+  "productName": "Mobile Phone 4",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Mobile Phone",
+  "discount": 0,
+  "price": 141,
+  "inStock": 50
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b63e"
+  },
+  "imgPath": "uploads/1743976648222-49558883pngimg.com - computer_mouse_PNG7699.png",
+  "productName": "Mouse 1",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Mouse",
+  "discount": 0,
+  "price": 7,
+  "inStock": 49
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b63f"
+  },
+  "imgPath": "uploads/1743976670727-643650433pngimg.com - earphones_PNG59.png",
+  "productName": "Earphone 1",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Earphone",
+  "discount": 0,
+  "price": 20,
+  "inStock": 48
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b640"
+  },
+  "imgPath": "uploads/1743976680351-313753720pngimg.com - earphones_PNG60.png",
+  "productName": "Earphone 2",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Earphone",
+  "discount": 0,
+  "price": 22,
+  "inStock": 47
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b641"
+  },
+  "imgPath": "uploads/1743976689551-921418205pngimg.com - computer_mouse_PNG7700.png",
+  "productName": "Mouse 2",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Mouse",
+  "discount": 0,
+  "price": 10,
+  "inStock": 49
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b642"
+  },
+  "imgPath": "uploads/1743976700175-68278750pngimg.com - headphones_PNG101985.png",
+  "productName": "Headphone 3",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Headphone",
+  "discount": 0,
+  "price": 27,
+  "inStock": 49
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b643"
+  },
+  "imgPath": "uploads/1743976747512-276007172pngimg.com - keyboard_PNG101874.png",
+  "productName": "Keyboard 2",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Keyboard",
+  "discount": 0,
+  "price": 15,
+  "inStock": 49
+},
+{
+  "_id": {
+    "$oid": "67f2d9c0f5833612c155b644"
+  },
+  "imgPath": "uploads/1743976736152-684415023pngimg.com - headphones_PNG101984.png",
+  "productName": "Headphone 4",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore velit itaque facere id aspernatur, rerum cum.",
+  "category": "Headphone",
+  "discount": 0,
+  "price": 35,
+  "inStock": 50
+}]
