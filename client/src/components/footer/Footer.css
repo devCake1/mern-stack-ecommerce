@@ -1,3 +1,12 @@
 .Footer {
-  height: 200px;
+  padding: 25px 0;
+}
+
+.Footer-content {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.Footer-icon-div {
+  width: 30px;
 }
