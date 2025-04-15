@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount, changeRole } = require("../controllers/userControllers");
+const { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount, changeRole, getOverview } = require("../controllers/userControllers");
 const isLoggedIn = require("../utility/isLoggedIn");
 const isAdmin = require("../utility/isAdmin");
 const userRoutes = express.Router();
@@ -24,6 +24,9 @@ userRoutes.get("/", isLoggedIn, isAdmin, getAllUsers);
 
 // GET: /api/users
 userRoutes.get("/:email", isLoggedIn, isAdmin, getSingleUser);
+
+// GET: /api/users/admin/get-overview
+userRoutes.get("/admin/get-overview", isLoggedIn, isAdmin, getOverview);
 
 // POST: /api/users/sign-in
 userRoutes.post("/sign-in", signIn);

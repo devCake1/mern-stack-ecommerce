@@ -1,6 +1,9 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const User = require("../models/userModel");
+const Order = require("../models/orderModel");
+const Product = require("../models/productModel");
+const Category = require("../models/categoryModel");
 
 const signIn = async (req, res, next) => {
   try {
@@ -204,4 +207,22 @@ const changeRole = async (req, res, next) => {
   }
 };
 
-module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount, changeRole };
+const getOverview = async (req, res, next) => {
+  try {
+    const countPendingOrders = await Order.find({ shippingStatus: false }).countDocuments();
+    const countCategories = await Category.find().countDocuments();
+    const countProducts = await Product.find().countDocuments();
+    const countCustomers = await User.find({ isAdmin: false }).countDocuments();
+    res.status(200).send({
+      totalPendingOrders: countPendingOrders,
+      totalCategories: countCategories,
+      totalProducts: countProducts,
+      totalCustomers: countCustomers,
+      isSuccessful: true
+    })
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { signIn, signUp, changeProfilePicture, updateProfileInfo, changePassword, getAllUsers, getSingleUser, deleteUserAccount, changeRole, getOverview };
